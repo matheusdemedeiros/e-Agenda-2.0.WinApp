@@ -35,6 +35,7 @@
             this.btnVisualizarPorCargo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listaContatos = new System.Windows.Forms.ListBox();
+            this.btnVisualizacaoComum = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnInserir
@@ -79,6 +80,7 @@
             this.btnVisualizarPorCargo.TabIndex = 3;
             this.btnVisualizarPorCargo.Text = "Visualização agrupada por cargos";
             this.btnVisualizarPorCargo.UseVisualStyleBackColor = false;
+            this.btnVisualizarPorCargo.Click += new System.EventHandler(this.btnVisualizarPorCargo_Click);
             // 
             // label1
             // 
@@ -100,10 +102,22 @@
             this.listaContatos.Size = new System.Drawing.Size(1026, 332);
             this.listaContatos.TabIndex = 6;
             // 
+            // btnVisualizacaoComum
+            // 
+            this.btnVisualizacaoComum.BackColor = System.Drawing.Color.White;
+            this.btnVisualizacaoComum.Location = new System.Drawing.Point(604, 9);
+            this.btnVisualizacaoComum.Name = "btnVisualizacaoComum";
+            this.btnVisualizacaoComum.Size = new System.Drawing.Size(133, 28);
+            this.btnVisualizacaoComum.TabIndex = 7;
+            this.btnVisualizacaoComum.Text = "Visualização comum";
+            this.btnVisualizacaoComum.UseVisualStyleBackColor = false;
+            this.btnVisualizacaoComum.Click += new System.EventHandler(this.btnVisualizacaoComum_Click);
+            // 
             // TelaListagemContatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnVisualizacaoComum);
             this.Controls.Add(this.listaContatos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVisualizarPorCargo);
@@ -126,5 +140,6 @@
         private System.Windows.Forms.Button btnVisualizarPorCargo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listaContatos;
+        private System.Windows.Forms.Button btnVisualizacaoComum;
     }
 }

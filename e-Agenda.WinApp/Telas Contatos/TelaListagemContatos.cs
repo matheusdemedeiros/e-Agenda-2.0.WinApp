@@ -4,6 +4,7 @@ using e_Agenda.Infra.Arquivos.RepositoriosEmArquivo;
 using e_Agenda.Infra.Arquivos.SerializacaoJson;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace e_Agenda.WinApp.Telas_Contatos
@@ -111,11 +112,50 @@ namespace e_Agenda.WinApp.Telas_Contatos
                 else
                 {
                     MessageBox.Show("Contato excluído com sucesso", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                 
+
                     CarregarContatos();
                 }
             }
 
+        }
+
+        private void btnVisualizarPorCargo_Click(object sender, EventArgs e)
+        {
+            List<Contato> contatos = repositorioContato.SelecionarTodos();
+
+            if (contatos.Count == 0)
+                return;
+
+            List<string> cargosExistentes = ObterCargos(contatos);
+
+            listaContatos.Items.Clear();
+
+            foreach (string cargo in cargosExistentes)
+            {
+                listaContatos.Items.Add("Agrupando pelo cargo: " + cargo);
+
+                foreach (Contato contato in contatos)
+                    if (contato.Cargo == cargo)
+                        listaContatos.Items.Add(contato);
+
+            }
+        }
+
+        private List<string> ObterCargos(List<Contato> contatos)
+        {
+            List<string> cargosCadastrados = new List<string>();
+
+            foreach (Contato contato in contatos)
+            {
+                cargosCadastrados.Add(contato.Cargo);
+            }
+
+            return cargosCadastrados.Distinct().ToList();
+        }
+
+        private void btnVisualizacaoComum_Click(object sender, EventArgs e)
+        {
+            CarregarContatos();
         }
     }
 }
