@@ -17,7 +17,7 @@ namespace e_Agenda.WinApp.Telas_Contatos
             SerializadorEntidadeJson<Contato> serializador = new SerializadorEntidadeJson<Contato>();
 
             repositorioContato = new RepositorioContatoArquivo(serializador);
-            
+
             InitializeComponent();
 
             CarregarContatos();
@@ -32,9 +32,14 @@ namespace e_Agenda.WinApp.Telas_Contatos
 
             if (resultado == DialogResult.OK)
             {
-                repositorioContato.Inserir(tela.Contato);
-                CarregarContatos();
+                string validacao = repositorioContato.Inserir(tela.Contato);
+
+                if (validacao != "REGISTRO_VALIDO")
+                    MessageBox.Show(validacao, "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                    CarregarContatos();
             }
+
         }
 
         private void CarregarContatos()
@@ -46,6 +51,35 @@ namespace e_Agenda.WinApp.Telas_Contatos
             foreach (Contato c in contatos)
             {
                 listaContatos.Items.Add(c);
+            }
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Contato contatoSelecionado = (Contato)listaContatos.SelectedItem;
+
+            if (contatoSelecionado == null)
+            {
+                MessageBox.Show("Selecione um contato primeiro",
+                "Edição de contatos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            CadastroContatosForm tela = new CadastroContatosForm();
+
+            tela.Contato = contatoSelecionado;
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                string validacao = repositorioContato.Editar(x => x.id == tela.Contato.id, tela.Contato);
+
+                if (validacao != "REGISTRO_VALIDO")
+                    MessageBox.Show(validacao, "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                    CarregarContatos();
             }
 
         }

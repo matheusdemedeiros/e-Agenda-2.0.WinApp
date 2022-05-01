@@ -2,6 +2,7 @@
 using e_Agenda.Dominio.Modulo_Contato;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Compromissso
 {
@@ -63,26 +64,29 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
             return retorno;
         }
 
-        public override ResultadoValidacao Validar()
+        public override string Validar()
         {
-            List<string> erros = new List<string>();
+            StringBuilder sb = new StringBuilder();
 
             if (string.IsNullOrEmpty(assunto))
-                erros.Add("\nÉ necessário inserir um assunto válido para os compromissos!");
+                sb.AppendLine("É necessário inserir um assunto válido para os compromissos!");
 
             if (string.IsNullOrEmpty(local))
-                erros.Add("\nÉ necessário inserir um local válido para os compromissos!");
+                sb.AppendLine("É necessário inserir um local válido para os compromissos!");
 
             if (horaInicio == new DateTime(1, 1, 1))
-                erros.Add("\nÉ necessário inserir uma data e hora de início válida para os compromissos!");
+                sb.AppendLine("É necessário inserir uma data e hora de início válida para os compromissos!");
             
             if (horaTermino == new DateTime(1, 1, 1))
-                erros.Add("\nÉ necessário inserir um horário de término válido para os compromissos!");
+                sb.AppendLine("É necessário inserir um horário de término válido para os compromissos!");
             
             if (contato == null)
-                erros.Add("\nÉ necessário inserir um contato válido para os compromissos!");
+                sb.AppendLine("É necessário inserir um contato válido para os compromissos!");
 
-            return new ResultadoValidacao(erros);
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
+            return sb.ToString();
         }
 
         #endregion

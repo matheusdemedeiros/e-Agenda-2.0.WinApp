@@ -1,6 +1,7 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Tarefa
 {
@@ -124,34 +125,38 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             }
         }
         
-        public override ResultadoValidacao Validar()
+        public override string Validar()
         {
-            List<string> erros = new List<string>();
+            StringBuilder sb = new StringBuilder();
+
 
             if (string.IsNullOrEmpty(titulo))
-                erros.Add("\nÉ necessário inserir um título para as tarefas!");
+                sb.AppendLine("É necessário inserir um título para as tarefas!");
 
             if (dataCriacao.Date == new DateTime(1, 1, 1))
-                erros.Add("\nÉ necessário inserir uma data de criação válida para as tarefas!");
+                sb.AppendLine("É necessário inserir uma data de criação válida para as tarefas!");
 
             if (prioridade == 0)
-                erros.Add("\nÉ necessário inserir uma prioridade válida (Alta, Normal ou Baixa) para as tarefas!");
+                sb.AppendLine("É necessário inserir uma prioridade válida (Alta, Normal ou Baixa) para as tarefas!");
 
-            return new ResultadoValidacao(erros);
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
+            return sb.ToString();
         }
         
         public override string ToString()
         {
             return
-            "ID: " + id + Environment.NewLine +
-            "Título: " + titulo + Environment.NewLine +
-            "Data de criação: " + dataCriacao.ToShortDateString() + Environment.NewLine +
-            "Data de conclusão: " + DataConclusao + Environment.NewLine +
-            "Prioridade: " + PrioridadeTarefa + Environment.NewLine +
-            "QTD de itens: " + QuantidadeDeItensTotais + Environment.NewLine +
-            "QTD de itens pendentes: " + QuantidadeDeItensPendentes + Environment.NewLine +
-            "QTD de itens concluídos: " + QuantidadeDeItensConcluidos + Environment.NewLine +
-            "Percentual de conclusao: " + PercentualConclusao + Environment.NewLine;
+            "ID: " + id + 
+            "\tTítulo: " + titulo + 
+            "\tData de criação: " + dataCriacao.ToShortDateString() + 
+            "\tData de conclusão: " + DataConclusao +
+            "\tPrioridade: " + PrioridadeTarefa + 
+            //\t"QTD de itens: " + QuantidadeDeItensTotais + Environment.NewLine +
+            //\t"QTD de itens pendentes: " + QuantidadeDeItensPendentes + Environment.NewLine +
+            //\t"QTD de itens concluídos: " + QuantidadeDeItensConcluidos + Environment.NewLine +
+            "\tPercentual de conclusao: " + PercentualConclusao;
         }
         
         public int CompareTo(Tarefa other)

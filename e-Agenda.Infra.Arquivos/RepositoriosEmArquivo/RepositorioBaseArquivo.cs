@@ -35,9 +35,9 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
         public virtual string Inserir(T novaEntidade)
         {
-            ResultadoValidacao validacao = novaEntidade.Validar();
+            string validacao = novaEntidade.Validar();
 
-            if (validacao.Status == StatusValidacao.Erro)
+            if (validacao != "REGISTRO_VALIDO")
                 return validacao.ToString();
 
             novaEntidade.id = ++contadorId;
@@ -49,13 +49,19 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return "REGISTRO_VALIDO";
         }
 
-        public bool Editar(int idSelecionado, T novaEntidade)
-        {
-            return Editar(x => x.id == idSelecionado, novaEntidade);
-        }
+        //public bool Editar(int idSelecionado, T novaEntidade)
+        //{
+        //    return Editar(x => x.id == idSelecionado, novaEntidade);
+        //}
 
-        public bool Editar(Predicate<T> condicao, T novaEntidade)
+        public string Editar(Predicate<T> condicao, T novaEntidade)
         {
+
+            string validacao = novaEntidade.Validar();
+
+            if (validacao != "REGISTRO_VALIDO")
+                return validacao.ToString();
+
             foreach (T entidade in registros)
             {
                 if (condicao(entidade))
@@ -68,11 +74,11 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
                     
                     serializador.GravarEntidadesEmArquivo(registros);
                     
-                    return true;
+                    return "REGISTRO_VALIDO";
                 }
             }
 
-            return false;
+            return "REGISTRO_INVALIDO";
         }
 
         public bool Excluir(int idSelecionado)

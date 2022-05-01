@@ -86,8 +86,10 @@
             this.Controls.Add(this.btnCompromisso);
             this.Controls.Add(this.btnContatos);
             this.Controls.Add(this.btnTarefas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TelaPrincipal";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "e-Agenda 2.0";
             this.ResumeLayout(false);

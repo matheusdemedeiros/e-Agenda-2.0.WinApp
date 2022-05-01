@@ -1,5 +1,6 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using System.Collections.Generic;
+using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Tarefa
 {
@@ -36,14 +37,17 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                 statusItem = Status.concluido;
         }
 
-        public override ResultadoValidacao Validar()
+        public override string Validar()
         {
-            List<string> erros = new List<string>();
+            StringBuilder sb = new StringBuilder();
 
             if (string.IsNullOrEmpty(descricao))
-                erros.Add("É necessário inserir uma descrição para o item!");
+                sb.Append("É necessário inserir uma descrição para o item!");
 
-            return new ResultadoValidacao(erros);
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
+            return sb.ToString();
         }
 
         public override string ToString()

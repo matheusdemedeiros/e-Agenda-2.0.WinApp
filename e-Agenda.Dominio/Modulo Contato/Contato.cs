@@ -1,6 +1,7 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Contato
 {
@@ -36,26 +37,31 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
         #region Métodos públicos
 
-        public override ResultadoValidacao Validar()
+        public override string Validar()
         {
+
+            StringBuilder sb = new StringBuilder();
             List<string> erros = new List<string>();
 
             if (string.IsNullOrEmpty(Nome))
-                erros.Add("\nÉ necessário inserir um nome válido para os contatos!");
+            sb.AppendLine("É necessário inserir um nome válido para os contatos!");
 
             if (!ValidarEmail())
-                erros.Add("\nÉ necessário inserir um email válido para os contatos (mínimo de 6 caracteres e contendo @ e . )!");
+                sb.AppendLine("É necessário inserir um email válido para os contatos (mínimo de 6 caracteres e contendo @ e . )!");
 
             if (!ValidarTelefone())
-                erros.Add("\nÉ necessário inserir um telefone válido para os contatos (mínimo 10 números com o DDD)!");
+                sb.AppendLine("É necessário inserir um telefone válido para os contatos (mínimo 10 números com o DDD)!");
 
             if (string.IsNullOrEmpty(Empresa))
-                erros.Add("\nÉ necessário inserir uma empresa válida para os contatos!");
+                sb.AppendLine("É necessário inserir uma empresa válida para os contatos!");
 
             if (string.IsNullOrEmpty(Cargo))
-                erros.Add("\nÉ necessário inserir um cargo válido para os contatos!");
+                sb.AppendLine("É necessário inserir um cargo válido para os contatos!");
 
-            return new ResultadoValidacao(erros);
+            if (sb.Length == 0)
+                sb.Append("REGISTRO_VALIDO");
+
+            return sb.ToString();
         }
 
         public override string ToString()

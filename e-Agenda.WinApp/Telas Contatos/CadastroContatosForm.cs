@@ -31,10 +31,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
             }
         }
 
-
-
-        #region Métodos privados
-
         private void LimparCampos()
         {
             txtNome.Text = "";
@@ -43,8 +39,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
             txtEmpresa.Text = "";
             txtCargo.Text = "";
         }
-
-        #endregion
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
