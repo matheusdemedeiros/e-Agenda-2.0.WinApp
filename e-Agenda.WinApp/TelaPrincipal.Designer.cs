@@ -36,39 +36,42 @@
             // 
             // btnTarefas
             // 
+            this.btnTarefas.BackColor = System.Drawing.Color.White;
             this.btnTarefas.Location = new System.Drawing.Point(24, 28);
             this.btnTarefas.Name = "btnTarefas";
             this.btnTarefas.Size = new System.Drawing.Size(152, 57);
             this.btnTarefas.TabIndex = 0;
             this.btnTarefas.Text = "Gerenciamento de Tarefas";
-            this.btnTarefas.UseVisualStyleBackColor = true;
+            this.btnTarefas.UseVisualStyleBackColor = false;
             this.btnTarefas.Click += new System.EventHandler(this.btnTarefas_Click);
             // 
             // btnContatos
             // 
+            this.btnContatos.BackColor = System.Drawing.Color.White;
             this.btnContatos.Location = new System.Drawing.Point(24, 172);
             this.btnContatos.Name = "btnContatos";
             this.btnContatos.Size = new System.Drawing.Size(152, 53);
             this.btnContatos.TabIndex = 1;
             this.btnContatos.Text = "Gerenciamento de Contatos";
-            this.btnContatos.UseVisualStyleBackColor = true;
+            this.btnContatos.UseVisualStyleBackColor = false;
             this.btnContatos.Click += new System.EventHandler(this.btnContatos_Click);
             // 
             // btnCompromisso
             // 
+            this.btnCompromisso.BackColor = System.Drawing.Color.White;
             this.btnCompromisso.Location = new System.Drawing.Point(24, 101);
             this.btnCompromisso.Name = "btnCompromisso";
             this.btnCompromisso.Size = new System.Drawing.Size(152, 55);
             this.btnCompromisso.TabIndex = 2;
             this.btnCompromisso.Text = "Gerenciamento de compromisso";
-            this.btnCompromisso.UseVisualStyleBackColor = true;
+            this.btnCompromisso.UseVisualStyleBackColor = false;
             this.btnCompromisso.Click += new System.EventHandler(this.btnCompromisso_Click);
             // 
             // panelPrincipal
             // 
-            this.panelPrincipal.BackColor = System.Drawing.Color.SlateBlue;
+            this.panelPrincipal.BackColor = System.Drawing.Color.Silver;
             this.panelPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPrincipal.Location = new System.Drawing.Point(199, 101);
+            this.panelPrincipal.Location = new System.Drawing.Point(199, 28);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(687, 346);
             this.panelPrincipal.TabIndex = 3;
@@ -77,8 +80,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkBlue;
-            this.ClientSize = new System.Drawing.Size(898, 459);
+            this.BackColor = System.Drawing.Color.Gray;
+            this.ClientSize = new System.Drawing.Size(898, 391);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.btnCompromisso);
             this.Controls.Add(this.btnContatos);
