@@ -79,7 +79,41 @@ namespace e_Agenda.WinApp.Telas_Contatos
                 if (validacao != "REGISTRO_VALIDO")
                     MessageBox.Show(validacao, "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
+                {
+                    MessageBox.Show("Contato editado com sucesso", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     CarregarContatos();
+                }
+            }
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Contato contatoSelecionado = (Contato)listaContatos.SelectedItem;
+
+            if (contatoSelecionado == null)
+            {
+                MessageBox.Show("Selecione um contato primeiro",
+                "Exclusão de contatos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o contato?",
+               "Exclusão de contatos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.OK)
+            {
+                bool conseguiuExcluir = repositorioContato.Excluir(x => x.id == contatoSelecionado.id);
+
+                if (!conseguiuExcluir)
+                    MessageBox.Show("Erro na exclusão do contato", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    MessageBox.Show("Contato excluído com sucesso", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 
+                    CarregarContatos();
+                }
             }
 
         }
