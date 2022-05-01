@@ -129,7 +129,6 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         {
             StringBuilder sb = new StringBuilder();
 
-
             if (string.IsNullOrEmpty(titulo))
                 sb.AppendLine("É necessário inserir um título para as tarefas!");
 

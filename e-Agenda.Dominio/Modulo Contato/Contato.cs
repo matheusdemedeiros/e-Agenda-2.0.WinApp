@@ -39,9 +39,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
         public override string Validar()
         {
-
             StringBuilder sb = new StringBuilder();
-            List<string> erros = new List<string>();
 
             if (string.IsNullOrEmpty(Nome))
             sb.AppendLine("É necessário inserir um nome válido para os contatos!");

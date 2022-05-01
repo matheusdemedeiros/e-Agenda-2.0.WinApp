@@ -1,6 +1,6 @@
-﻿namespace e_Agenda.WinApp
+﻿namespace e_Agenda.WinApp.Telas_Tarefas
 {
-    partial class TelaCompromissos
+    partial class TelaTarefas
     {
         /// <summary> 
         /// Required designer variable.
@@ -38,15 +38,15 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(254, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "teste compromissos";
+            this.button1.Text = "teste tarefas";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // TelaCompromissos
+            // TelaTarefas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
-            this.Name = "TelaCompromissos";
+            this.Name = "TelaTarefas";
             this.Size = new System.Drawing.Size(866, 455);
             this.ResumeLayout(false);
 

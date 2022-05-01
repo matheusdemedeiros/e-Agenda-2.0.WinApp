@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace e_Agenda.WinApp
+namespace e_Agenda.WinApp.Telas_Tarefas
 {
     public partial class TelaTarefas : UserControl
     {

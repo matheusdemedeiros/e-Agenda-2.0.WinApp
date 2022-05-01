@@ -1,4 +1,6 @@
-﻿using e_Agenda.WinApp.Telas_Contatos;
+﻿using e_Agenda.WinApp.Telas_Compromissos;
+using e_Agenda.WinApp.Telas_Contatos;
+using e_Agenda.WinApp.Telas_Tarefas;
 using System;
 using System.Windows.Forms;
 
