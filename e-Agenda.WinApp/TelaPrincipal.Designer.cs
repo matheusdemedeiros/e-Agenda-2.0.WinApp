@@ -37,9 +37,9 @@
             // btnTarefas
             // 
             this.btnTarefas.BackColor = System.Drawing.Color.White;
-            this.btnTarefas.Location = new System.Drawing.Point(24, 28);
+            this.btnTarefas.Location = new System.Drawing.Point(328, 15);
             this.btnTarefas.Name = "btnTarefas";
-            this.btnTarefas.Size = new System.Drawing.Size(152, 57);
+            this.btnTarefas.Size = new System.Drawing.Size(152, 53);
             this.btnTarefas.TabIndex = 0;
             this.btnTarefas.Text = "Gerenciamento de Tarefas";
             this.btnTarefas.UseVisualStyleBackColor = false;
@@ -48,7 +48,7 @@
             // btnContatos
             // 
             this.btnContatos.BackColor = System.Drawing.Color.White;
-            this.btnContatos.Location = new System.Drawing.Point(24, 172);
+            this.btnContatos.Location = new System.Drawing.Point(12, 15);
             this.btnContatos.Name = "btnContatos";
             this.btnContatos.Size = new System.Drawing.Size(152, 53);
             this.btnContatos.TabIndex = 1;
@@ -59,9 +59,9 @@
             // btnCompromisso
             // 
             this.btnCompromisso.BackColor = System.Drawing.Color.White;
-            this.btnCompromisso.Location = new System.Drawing.Point(24, 101);
+            this.btnCompromisso.Location = new System.Drawing.Point(170, 15);
             this.btnCompromisso.Name = "btnCompromisso";
-            this.btnCompromisso.Size = new System.Drawing.Size(152, 55);
+            this.btnCompromisso.Size = new System.Drawing.Size(152, 53);
             this.btnCompromisso.TabIndex = 2;
             this.btnCompromisso.Text = "Gerenciamento de compromisso";
             this.btnCompromisso.UseVisualStyleBackColor = false;
@@ -71,9 +71,9 @@
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.Silver;
             this.panelPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPrincipal.Location = new System.Drawing.Point(199, 28);
+            this.panelPrincipal.Location = new System.Drawing.Point(12, 89);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(687, 346);
+            this.panelPrincipal.Size = new System.Drawing.Size(1053, 394);
             this.panelPrincipal.TabIndex = 3;
             // 
             // TelaPrincipal
@@ -81,13 +81,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(898, 391);
+            this.ClientSize = new System.Drawing.Size(1077, 495);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.btnCompromisso);
             this.Controls.Add(this.btnContatos);
             this.Controls.Add(this.btnTarefas);
             this.MaximizeBox = false;
             this.Name = "TelaPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "e-Agenda 2.0";
             this.ResumeLayout(false);
 

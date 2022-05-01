@@ -47,7 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
             this.Name = "TelaCompromissos";
-            this.Size = new System.Drawing.Size(687, 346);
+            this.Size = new System.Drawing.Size(866, 455);
             this.ResumeLayout(false);
 
         }

@@ -39,8 +39,8 @@
             this.txtEmpresa = new System.Windows.Forms.TextBox();
             this.txtCargo = new System.Windows.Forms.TextBox();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimparCampos = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -135,17 +135,6 @@
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.White;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(290, 186);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
             // btnLimparCampos
             // 
             this.btnLimparCampos.BackColor = System.Drawing.Color.White;
@@ -157,13 +146,24 @@
             this.btnLimparCampos.UseVisualStyleBackColor = false;
             this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(290, 186);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
             // CadastroContatosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 224);
-            this.Controls.Add(this.btnLimparCampos);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnLimparCampos);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.txtCargo);
             this.Controls.Add(this.txtEmpresa);
@@ -199,7 +199,7 @@
         private System.Windows.Forms.TextBox txtEmpresa;
         private System.Windows.Forms.TextBox txtCargo;
         private System.Windows.Forms.Button btnGravar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnLimparCampos;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

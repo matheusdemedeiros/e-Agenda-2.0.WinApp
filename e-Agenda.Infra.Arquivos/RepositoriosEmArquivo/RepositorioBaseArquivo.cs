@@ -80,7 +80,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return Excluir(x => x.id == idSelecionado);
         }
 
-
         public bool Excluir(Predicate<T> condicao)
         {
             foreach (T entidade in registros)

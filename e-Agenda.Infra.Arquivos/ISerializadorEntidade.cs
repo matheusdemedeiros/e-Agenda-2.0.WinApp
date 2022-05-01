@@ -6,6 +6,7 @@ namespace e_Agenda.Infra.Arquivos
     public interface ISerializadorEntidade<T> where T : EntidadeBase
     {
         List<T> CarregarEntidadesDoArquivo();
+
         void GravarEntidadesEmArquivo(List<T> entidades);
         
     }

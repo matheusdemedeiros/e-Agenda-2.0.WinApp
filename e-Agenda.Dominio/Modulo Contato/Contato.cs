@@ -23,7 +23,6 @@ namespace e_Agenda.Dominio.Modulo_Contato
         {
 
         }
-
         public Contato(string nome, string email, string telefone, string empresa, string cargo)
         {
             this.Nome = nome;
@@ -64,7 +63,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
             string retorno =
           "ID: " + id +
           "\tNome: " + Nome +
-          "\tEmail:" + Email +
+          "\tEmail: " + Email +
           "\tTelefone: " + Telefone +
           "\tEmpresa: " + Empresa +
           "\tCargo: " + Cargo;
