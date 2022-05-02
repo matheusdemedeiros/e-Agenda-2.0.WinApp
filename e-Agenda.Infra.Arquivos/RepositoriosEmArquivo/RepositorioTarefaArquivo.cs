@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 {
-    public class RepositorioTarefaArquivo : RepositorioBaseArquivo<Tarefa>, IRepositorio<Tarefa>, IRepositorioTarefaEspecifico
+    public class RepositorioTarefaArquivo : RepositorioBaseArquivo<Tarefa>, IRepositorioTarefaEspecifico
     {
         public RepositorioTarefaArquivo(ISerializadorEntidade<Tarefa> serializador) : base(serializador)
         {

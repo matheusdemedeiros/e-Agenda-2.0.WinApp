@@ -117,7 +117,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             {
                 List<Item> itens = tela.ItensAdicionados;
 
-                var repositorio = repositorioTarefa as IRepositorioTarefaEspecifico;
+                var repositorio = (IRepositorioTarefaEspecifico)repositorioTarefa;
 
                 repositorio.AdicionarItens(tarefaSelecionada, itens);
 

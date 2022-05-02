@@ -3,11 +3,13 @@ using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Tarefa
 {
-    public class Item : EntidadeBase
+    public class Item
     {
         #region Atributos
 
         private Status statusItem;
+
+
 
         #endregion
 
@@ -41,44 +43,29 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         }
 
 
-        public void MarcarPendente()
-        {
-            EstaPendente = true;
-        }
 
         public string Descricao { get; set; }
 
         #endregion
 
         #region Métodos públicos
-
+        
+        public void MarcarPendente()
+        {
+            EstaPendente = true;
+        }
+        
         public void Concluir()
         {
             if (statusItem == Status.pendente)
                 statusItem = Status.concluido;
         }
 
-        public override string Validar()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            if (string.IsNullOrEmpty(Descricao))
-                sb.Append("É necessário inserir uma descrição para o item!");
-
-            if (sb.Length == 0)
-                sb.Append("REGISTRO_VALIDO");
-
-            return sb.ToString();
-        }
-
         public override string ToString()
         {
-            return
-                "ID: " + id +
-                "\tDescrição: " + Descricao +
-                "\tStatus: " + statusItem;
+            return "Descrição: " + Descricao;
         }
-        
+
         #endregion
     }
 }

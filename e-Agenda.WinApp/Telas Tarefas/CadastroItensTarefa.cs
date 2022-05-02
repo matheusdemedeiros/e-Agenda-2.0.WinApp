@@ -23,30 +23,35 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             {
                 listItensTarefa.Items.Add(item);
             }
-
         }
 
-        public List<Item> ItensAdicionados 
+        public List<Item> ItensAdicionados
         {
-            get 
+            get
             {
                 return listItensTarefa.Items.Cast<Item>().ToList();
             }
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
-        {            
-            List<string> descricoes = ItensAdicionados.Select(x => x.Descricao).ToList();
-
-            if (descricoes.Count == 0 || descricoes.Contains(txtDescricaoItem.Text) == false)
+        {
+            if (string.IsNullOrEmpty(txtDescricaoItem.Text) == false)
             {
-                Item item = new Item();
+                List<string> descricoes = ItensAdicionados.Select(x => x.Descricao).ToList();
 
-                item.Descricao = txtDescricaoItem.Text;
+                if (descricoes.Count == 0 || descricoes.Contains(txtDescricaoItem.Text) == false)
+                {
+                    Item item = new Item();
 
-                listItensTarefa.Items.Add(item);
+                    item.Descricao = txtDescricaoItem.Text;
+
+                    listItensTarefa.Items.Add(item);
+                }
+                else
+                    MessageBox.Show("Item já existente na tarefa!", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else
+                MessageBox.Show("Descrição vazia", "Informativo",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
         }
-       
     }
 }

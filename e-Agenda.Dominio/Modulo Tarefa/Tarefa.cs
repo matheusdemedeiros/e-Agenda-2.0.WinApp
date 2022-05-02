@@ -13,7 +13,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
         private int prioridade;
         private Status statusTarefa;
-        public List<Item> itens = new List<Item>();
+        private List<Item> itens = new List<Item>();
 
         #endregion
 

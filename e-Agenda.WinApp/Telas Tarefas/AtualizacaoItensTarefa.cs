@@ -27,10 +27,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
         private void CarregarItensTarefa(Tarefa tarefa)
         {
-            foreach (var item in tarefa.itens)
-                listItensTarefa.Items.Add(item);
-            
-            int i = 0; 
+            int i = 0;
             foreach (var item in tarefa.Itens)
             {
                 listItensTarefa.Items.Add(item);
