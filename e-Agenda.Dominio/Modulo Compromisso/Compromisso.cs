@@ -29,7 +29,10 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
         #endregion
 
         #region Construtores
+        public Compromisso()
+        {
 
+        }
         public Compromisso(string assunto, string local, string horaInicio, string horaTermino, Contato contato)
         {
             this.assunto = assunto;

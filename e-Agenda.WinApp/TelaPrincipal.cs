@@ -16,7 +16,7 @@ namespace e_Agenda.WinApp
         private void btnCompromisso_Click(object sender, EventArgs e)
         {
             panelPrincipal.Controls.Clear();
-            TelaCompromissos tela = new TelaCompromissos();
+            TelaListagemCompromissos tela = new TelaListagemCompromissos();
             panelPrincipal.Controls.Add(tela);
         }
 

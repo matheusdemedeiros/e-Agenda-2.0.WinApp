@@ -10,8 +10,8 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 {
     public partial class TelaListagemTarefas : UserControl
     {
-
         IRepositorio<Tarefa> repositorioTarefa;
+
         public TelaListagemTarefas()
         {
             SerializadorEntidadeJson<Tarefa> serializador = new SerializadorEntidadeJson<Tarefa>();
