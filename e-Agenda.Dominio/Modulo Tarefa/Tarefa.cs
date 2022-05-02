@@ -14,6 +14,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         private int prioridade;
         private Status statusTarefa;
         private List<Item> itens = new List<Item>();
+        private DateTime? dataConclusao;
 
         #endregion
 
@@ -21,7 +22,19 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
         public string Titulo { get; set; }
         public DateTime DataCriacao { get; set; }
-        public DateTime? DataConclusao { get; set; }
+        public DateTime? DataConclusao
+        {
+            get
+            {
+                if (CalcularPercentualConcluido() == 100)
+                    dataConclusao = DateTime.Now;
+                else
+                    dataConclusao = null;
+
+                return dataConclusao;
+            }
+            set { dataConclusao = value; }
+        }
         public List<Item> Itens { get { return itens; } }
         public string PrioridadeTarefa
         {
@@ -48,7 +61,15 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                     prioridade = 3;
             }
         }
-        public Status StatusTarefa { get => statusTarefa; set => statusTarefa = value; }
+        public Status StatusTarefa
+        {
+            get
+            {
+                return CalcularPercentualConcluido() == 100 ? Status.concluido : Status.pendente;
+
+            }
+            set { statusTarefa = value; }
+        }
 
         #endregion
 
@@ -76,6 +97,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             Item itemTarefa = itens.Find(x => x.Equals(item));
 
             itemTarefa?.MarcarPendente();
+
         }
 
         public void ConcluirItem(Item item)
@@ -130,9 +152,9 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                 dataConclusao = DataConclusao.ToString();
 
             string retorno =
-            $"ID: { id } \tTítulo: { Titulo} \tData de criação: { DataCriacao.ToString()} " +
-            $"\tData de conclusão: {dataConclusao}   \tPrioridade: { PrioridadeTarefa } " +
-            $"\tPercentual de conclusao: { CalcularPercentualConcluido() }  % ";
+            $"ID: { id } \tTítulo: {Titulo} \tData de criação: {DataCriacao.ToString()}" +
+            $"\tData de conclusão: {dataConclusao}   \tPrioridade: { PrioridadeTarefa }" +
+            $"\tPercentual de conclusao: {CalcularPercentualConcluido()}  % ";
             return retorno;
         }
 

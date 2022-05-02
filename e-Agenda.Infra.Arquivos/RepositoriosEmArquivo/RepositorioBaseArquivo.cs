@@ -81,12 +81,12 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return "REGISTRO_INVALIDO";
         }
 
-        public bool Excluir(int idSelecionado)
+        public string Excluir(int idSelecionado)
         {
             return Excluir(x => x.id == idSelecionado);
         }
 
-        public bool Excluir(Predicate<T> condicao)
+        public virtual string Excluir(Predicate<T> condicao)
         {
             foreach (T entidade in registros)
             {
@@ -96,10 +96,10 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
                     serializador.GravarEntidadesEmArquivo(registros);
 
-                    return true;
+                    return "EXCLUSAO_REALIZADA";
                 }
             }
-            return false;
+            return "EXCLUSAO_NAOREALIZADA";
         }
 
         public T SelecionarRegistro(int idSelecionado)

@@ -32,7 +32,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             {
                 listItensTarefa.Items.Add(item);
 
-                if (!item.EstaPendente)
+                if (item.EstaPendente == false)
                     listItensTarefa.SetItemChecked(i, true);
 
                 i++;

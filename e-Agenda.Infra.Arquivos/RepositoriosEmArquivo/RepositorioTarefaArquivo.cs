@@ -1,5 +1,6 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using e_Agenda.Dominio.Modulo_Tarefa;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -79,6 +80,38 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return sb.ToString();
         }
 
+        public override string Excluir(Predicate<Tarefa> condicao)
+        {
+            List<Tarefa> tarefas = registros.Cast<Tarefa>().ToList();
+
+            foreach (Tarefa tarefa in tarefas)
+            {
+                if (condicao(tarefa))
+                {
+                    if (tarefa.StatusTarefa == Status.concluido || tarefa.Itens.Count == 0)
+                    {
+                        tarefas.Remove(tarefa);
+
+                        serializador.GravarEntidadesEmArquivo(tarefas);
+                        
+                        return "EXCLUSAO_REALIZADA";
+                    }
+                    else
+                        return "A tarefa não pode ser excluída!";
+                }
+            }
+            return "EXCLUSAO_NAOREALIZADA";
+        }
+
+        //public List<Tarefa> SelecionarTarefasConcluidas()
+        //{
+        //    return tarefas.Where(x => x.CalcularPercentualConcluido() == 100).ToList();
+        //}
+
+        //public List<Tarefa> SelecionarTarefasPendentes()
+        //{
+        //    return tarefas.Where(x => x.CalcularPercentualConcluido() < 100).ToList();
+        //}
 
 
 

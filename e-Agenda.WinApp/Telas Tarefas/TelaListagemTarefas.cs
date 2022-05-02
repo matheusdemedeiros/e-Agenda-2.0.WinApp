@@ -39,12 +39,11 @@ namespace e_Agenda.WinApp.Telas_Tarefas
                 else
                     CarregarTarefas();
             }
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            Tarefa? tarefaSelecionada = ObtemTarefaSelecionada();
 
             if (tarefaSelecionada == null)
             {
@@ -76,7 +75,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            Tarefa? tarefaSelecionada = ObtemTarefaSelecionada();
 
             if (tarefaSelecionada == null)
             {
@@ -90,9 +89,33 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
             if (resultado == DialogResult.OK)
             {
-                repositorioTarefa.Excluir(x => x == tarefaSelecionada);
+                string conseguiuExcluir = repositorioTarefa.Excluir(x => x.id == tarefaSelecionada.id);
+
+                if (conseguiuExcluir == "EXCLUSAO_REALIZADA")
+                {
+                    MessageBox.Show("Tarefa excluída com sucesso!",
+               "Exclusão de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show(conseguiuExcluir,
+                                   "Exclusão de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 CarregarTarefas();
             }
+        }
+
+        private Tarefa? ObtemTarefaSelecionada()
+        {
+            Tarefa? tarefaSelecionada = null;
+            
+            if (tabControlTarefas.SelectedTab == tabPageTarefasPendentes)
+                tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            else if (tabControlTarefas.SelectedTab == tabPageTarefasConcluidas)
+                tarefaSelecionada = (Tarefa)listTarefasConcluidas.SelectedItem;
+            return tarefaSelecionada;
         }
 
         private void btnVisualizacaoComum_Click(object sender, EventArgs e)
@@ -127,7 +150,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
         private void btnAtualizarItens_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            Tarefa? tarefaSelecionada = ObtemTarefaSelecionada();
 
             if (tarefaSelecionada == null)
             {
@@ -159,6 +182,10 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
         private void CarregarTarefas()
         {
+            SerializadorEntidadeJson<Tarefa> serializador = new SerializadorEntidadeJson<Tarefa>();
+
+            repositorioTarefa = new RepositorioTarefaArquivo(serializador);
+
             List<Tarefa> tarefasConcluidas = repositorioTarefa.Filtrar(x => x.StatusTarefa == Status.concluido);
 
             listTarefasConcluidas.Items.Clear();

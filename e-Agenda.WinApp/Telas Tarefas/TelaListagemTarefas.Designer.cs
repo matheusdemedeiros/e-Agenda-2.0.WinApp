@@ -35,16 +35,16 @@
             this.btnOrdenarPorPrioridade = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnVisualizacaoComum = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControlTarefas = new System.Windows.Forms.TabControl();
+            this.tabPageTarefasPendentes = new System.Windows.Forms.TabPage();
             this.listTarefasPendentes = new System.Windows.Forms.ListBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageTarefasConcluidas = new System.Windows.Forms.TabPage();
             this.listTarefasConcluidas = new System.Windows.Forms.ListBox();
             this.btnCadastrarItens = new System.Windows.Forms.Button();
             this.btnAtualizarItens = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabControlTarefas.SuspendLayout();
+            this.tabPageTarefasPendentes.SuspendLayout();
+            this.tabPageTarefasConcluidas.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnInserir
@@ -112,26 +112,26 @@
             this.btnVisualizacaoComum.UseVisualStyleBackColor = false;
             this.btnVisualizacaoComum.Click += new System.EventHandler(this.btnVisualizacaoComum_Click);
             // 
-            // tabControl1
+            // tabControlTarefas
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(15, 44);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1024, 347);
-            this.tabControl1.TabIndex = 8;
+            this.tabControlTarefas.Controls.Add(this.tabPageTarefasPendentes);
+            this.tabControlTarefas.Controls.Add(this.tabPageTarefasConcluidas);
+            this.tabControlTarefas.Location = new System.Drawing.Point(15, 44);
+            this.tabControlTarefas.Name = "tabControlTarefas";
+            this.tabControlTarefas.SelectedIndex = 0;
+            this.tabControlTarefas.Size = new System.Drawing.Size(1024, 347);
+            this.tabControlTarefas.TabIndex = 8;
             // 
-            // tabPage1
+            // tabPageTarefasPendentes
             // 
-            this.tabPage1.Controls.Add(this.listTarefasPendentes);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1016, 319);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Tarefas Pendentes";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageTarefasPendentes.Controls.Add(this.listTarefasPendentes);
+            this.tabPageTarefasPendentes.Location = new System.Drawing.Point(4, 24);
+            this.tabPageTarefasPendentes.Name = "tabPageTarefasPendentes";
+            this.tabPageTarefasPendentes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTarefasPendentes.Size = new System.Drawing.Size(1016, 319);
+            this.tabPageTarefasPendentes.TabIndex = 0;
+            this.tabPageTarefasPendentes.Text = "Tarefas Pendentes";
+            this.tabPageTarefasPendentes.UseVisualStyleBackColor = true;
             // 
             // listTarefasPendentes
             // 
@@ -143,16 +143,16 @@
             this.listTarefasPendentes.Size = new System.Drawing.Size(1004, 289);
             this.listTarefasPendentes.TabIndex = 6;
             // 
-            // tabPage2
+            // tabPageTarefasConcluidas
             // 
-            this.tabPage2.Controls.Add(this.listTarefasConcluidas);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1016, 319);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Tarefas Concluídas";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageTarefasConcluidas.Controls.Add(this.listTarefasConcluidas);
+            this.tabPageTarefasConcluidas.Location = new System.Drawing.Point(4, 24);
+            this.tabPageTarefasConcluidas.Name = "tabPageTarefasConcluidas";
+            this.tabPageTarefasConcluidas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTarefasConcluidas.Size = new System.Drawing.Size(1016, 319);
+            this.tabPageTarefasConcluidas.TabIndex = 1;
+            this.tabPageTarefasConcluidas.Text = "Tarefas Concluídas";
+            this.tabPageTarefasConcluidas.UseVisualStyleBackColor = true;
             // 
             // listTarefasConcluidas
             // 
@@ -192,7 +192,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnAtualizarItens);
             this.Controls.Add(this.btnCadastrarItens);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlTarefas);
             this.Controls.Add(this.btnVisualizacaoComum);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOrdenarPorPrioridade);
@@ -201,9 +201,9 @@
             this.Controls.Add(this.btnInserir);
             this.Name = "TelaListagemTarefas";
             this.Size = new System.Drawing.Size(1053, 394);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tabControlTarefas.ResumeLayout(false);
+            this.tabPageTarefasPendentes.ResumeLayout(false);
+            this.tabPageTarefasConcluidas.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,12 +218,13 @@
         private System.Windows.Forms.Button btnOrdenarPorPrioridade;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnVisualizacaoComum;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabControlTarefas;
+        private System.Windows.Forms.TabPage tabPageTarefasPendentes;
         private System.Windows.Forms.ListBox listTarefasPendentes;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageTarefasConcluidas;
         private System.Windows.Forms.ListBox listTarefasConcluidas;
         private System.Windows.Forms.Button btnCadastrarItens;
         private System.Windows.Forms.Button btnAtualizarItens;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }

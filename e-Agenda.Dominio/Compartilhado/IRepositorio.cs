@@ -7,7 +7,7 @@ namespace e_Agenda.Dominio.Compartilhado
     {
         string Inserir(T entidade);
         string Editar(Predicate<T> condicao, T novaEntidade);
-        bool Excluir(Predicate<T> condicao);
+        string Excluir(Predicate<T> condicao);
         bool ExisteRegistro(Predicate<T> condicao);
         List<T> SelecionarTodos();
         List<T> Filtrar(Predicate<T> condicao);

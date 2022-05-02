@@ -5,15 +5,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 {
     public class Item
     {
-        #region Atributos
-
         private Status statusItem;
-
-
-
-        #endregion
-
-        #region Construtor
 
         public Item()
         {
@@ -25,10 +17,6 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             this.Descricao = descricao;
             statusItem = Status.pendente;
         }
-
-        #endregion
-
-        #region Propriedades
 
         public bool EstaPendente
         {
@@ -42,13 +30,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             }
         }
 
-
-
         public string Descricao { get; set; }
-
-        #endregion
-
-        #region Métodos públicos
         
         public void MarcarPendente()
         {
@@ -65,7 +47,5 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         {
             return "Descrição: " + Descricao;
         }
-
-        #endregion
     }
 }
