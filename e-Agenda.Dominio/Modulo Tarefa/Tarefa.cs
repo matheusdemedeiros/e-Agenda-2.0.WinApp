@@ -84,7 +84,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         public Tarefa(string tituloTarefa, string dataCriacao, int prioridade)
         {
             this.Titulo = tituloTarefa;
-            this.DataCriacao = DateTime.TryParse(dataCriacao, out DateTime data) ? data : new DateTime(1, 1, 1);
+            //this.DataCriacao = DateTime.TryParse(dataCriacao, out DateTime data) ? data : new DateTime(1, 1, 1);
             this.prioridade = prioridade;
 
         }

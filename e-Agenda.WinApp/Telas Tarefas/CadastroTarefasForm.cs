@@ -18,7 +18,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
         public CadastroTarefasForm()
         {
             InitializeComponent();
-            txtDataCriacao.Text = DateTime.Now.ToString();
+            //PreencherCampoDataCriacao();
             comboBoxPrioridade.SelectedIndex = 0;
         }
 
@@ -34,17 +34,26 @@ namespace e_Agenda.WinApp.Telas_Tarefas
                 txtId.Text = tarefa.id.ToString();
                 txtTitulo.Text = tarefa.Titulo;
                 comboBoxPrioridade.Text = tarefa.PrioridadeTarefa;
+                txtDataCriacao.Text = tarefa.DataCriacao.ToString();
+                PreencherCampoDataCriacao();
             }
-        }      
+        }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
             //string tituloTarefa, string dataCriacao, int prioridade
-            tarefa = new Tarefa();
+
             tarefa.Titulo = txtTitulo.Text;
             tarefa.DataCriacao = DateTime.Parse(txtDataCriacao.Text);
             tarefa.PrioridadeTarefa = comboBoxPrioridade.Text;
         }
 
+        private void PreencherCampoDataCriacao()
+        {
+            if (tarefa.DataCriacao == new DateTime(1, 1, 1))
+                txtDataCriacao.Text = DateTime.Now.ToString();
+            else
+                txtDataCriacao.Text = Tarefa.DataCriacao.ToString();
+        }
     }
 }
