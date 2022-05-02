@@ -37,9 +37,9 @@ namespace e_Agenda.WinApp.Telas_Tarefas
         {
             if (string.IsNullOrEmpty(txtDescricaoItem.Text) == false)
             {
-                List<string> descricoes = ItensAdicionados.Select(x => x.Descricao).ToList();
+                List<string> descricoes = ItensAdicionados.Select(x => x.Descricao.ToUpper()).ToList();
 
-                if (descricoes.Count == 0 || descricoes.Contains(txtDescricaoItem.Text) == false)
+                if (descricoes.Count == 0 || descricoes.Contains(txtDescricaoItem.Text.ToUpper()) == false)
                 {
                     Item item = new Item();
 

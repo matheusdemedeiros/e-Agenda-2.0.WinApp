@@ -15,13 +15,20 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
         public override string Inserir(Contato novaEntidade)
         {
-            string validacao = novaEntidade.Validar();
+            string validacaoDeContato = novaEntidade.Validar();
 
-            if (validacao != "REGISTRO_VALIDO")
-                return validacao.ToString();
+            string validacaoDeDadosIguais = ValidaContatosComDadosIguais(novaEntidade);
 
-            if (ValidaContatosComDadosIguais(novaEntidade) != "REGISTRO_VALIDO")
-                return validacao.ToString();
+            string retorno = "REGISTRO_VALIDO";
+
+            if (validacaoDeContato != "REGISTRO_VALIDO")
+                retorno = validacaoDeContato;
+
+            if (validacaoDeDadosIguais != "REGISTRO_VALIDO")
+                retorno = validacaoDeDadosIguais;
+
+            if(retorno != "REGISTRO_VALIDO")
+                return retorno.ToString();
 
             novaEntidade.id = ++contadorId;
 

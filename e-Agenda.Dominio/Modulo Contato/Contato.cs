@@ -112,6 +112,9 @@ namespace e_Agenda.Dominio.Modulo_Contato
         {
             // podemos utilizar o valor discard (representado pelo _ (underscore))
             // para descartar argumento out do método
+            if (string.IsNullOrEmpty(Email))
+                return false;
+
             bool emailEstaValido = System.Net.Mail.MailAddress.TryCreate(Email, out _);
 
             return emailEstaValido;
