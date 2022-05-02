@@ -10,11 +10,11 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         #region Atributos
 
         private static int contadorIdItem = 0;
-        private readonly string titulo;
-        private readonly int prioridade;
+        private string titulo;
+        private int prioridade;
         private Status statusTarefa;
         private DateTime dataConclusao;
-        public DateTime dataCriacao;
+        private DateTime dataCriacao;
         public List<Item> itensPendentes = new List<Item>();
         public List<Item> itensConcluidos = new List<Item>();
 
@@ -57,23 +57,41 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
                 return retorno;
             }
+
+            set
+            {
+                if (value == "Baixa")
+                    prioridade = 1;
+                else if (value == "Normal")
+                    prioridade = 2;
+                else if (value == "Alta")
+                    prioridade = 3;
+            }
         }
+
+        public string Titulo { get => titulo; set => titulo = value; }
+        public DateTime DataCriacao { get => dataCriacao; set => dataCriacao = DateTime.TryParse(value.ToString(), out DateTime data) ? data : new DateTime(1, 1, 1); }
 
         #endregion
 
         #region Construtores
 
+        public Tarefa()
+        {
+
+        }
+
         public Tarefa(string tituloTarefa, string dataCriacao, int prioridade)
         {
-            this.titulo = tituloTarefa;
-            this.dataCriacao = DateTime.TryParse(dataCriacao, out DateTime data) ? data : new DateTime(1, 1, 1);
+            this.Titulo = tituloTarefa;
+            this.DataCriacao = DateTime.TryParse(dataCriacao, out DateTime data) ? data : new DateTime(1, 1, 1);
             this.prioridade = prioridade;
 
         }
 
         public Tarefa(string tituloTarefa, int prioridade)
         {
-            this.titulo = tituloTarefa;
+            this.Titulo = tituloTarefa;
             this.prioridade = prioridade;
         }
 
@@ -124,15 +142,15 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                 Console.WriteLine();
             }
         }
-        
+
         public override string Validar()
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(titulo))
+            if (string.IsNullOrEmpty(Titulo))
                 sb.AppendLine("É necessário inserir um título para as tarefas!");
 
-            if (dataCriacao.Date == new DateTime(1, 1, 1))
+            if (DataCriacao.Date == new DateTime(1, 1, 1))
                 sb.AppendLine("É necessário inserir uma data de criação válida para as tarefas!");
 
             if (prioridade == 0)
@@ -143,21 +161,21 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
             return sb.ToString();
         }
-        
+
         public override string ToString()
         {
             return
-            "ID: " + id + 
-            "\tTítulo: " + titulo + 
-            "\tData de criação: " + dataCriacao.ToShortDateString() + 
+            "ID: " + id +
+            "\tTítulo: " + Titulo +
+            "\tData de criação: " + DataCriacao.ToShortDateString() +
             "\tData de conclusão: " + DataConclusao +
-            "\tPrioridade: " + PrioridadeTarefa + 
+            "\tPrioridade: " + PrioridadeTarefa +
             //\t"QTD de itens: " + QuantidadeDeItensTotais + Environment.NewLine +
             //\t"QTD de itens pendentes: " + QuantidadeDeItensPendentes + Environment.NewLine +
             //\t"QTD de itens concluídos: " + QuantidadeDeItensConcluidos + Environment.NewLine +
             "\tPercentual de conclusao: " + PercentualConclusao;
         }
-        
+
         public int CompareTo(Tarefa other)
         {
             if (prioridade < other.prioridade)
@@ -167,7 +185,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             else
                 return 0;
         }
-        
+
         #endregion
 
         #region Métodos privados

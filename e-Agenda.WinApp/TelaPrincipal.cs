@@ -23,7 +23,7 @@ namespace e_Agenda.WinApp
         private void btnTarefas_Click(object sender, EventArgs e)
         {
             panelPrincipal.Controls.Clear();
-            TelaTarefas tela = new TelaTarefas();
+            TelaListagemTarefas tela = new TelaListagemTarefas();
             panelPrincipal.Controls.Add(tela);
         }
 

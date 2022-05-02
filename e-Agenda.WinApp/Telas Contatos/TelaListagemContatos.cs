@@ -157,5 +157,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
         {
             CarregarContatos();
         }
+
     }
 }
