@@ -96,14 +96,66 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             }
         }
 
-        private void btnVisualizarPorCargo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnVisualizacaoComum_Click(object sender, EventArgs e)
         {
+            CarregarTarefas();
+        }
 
+        private void btnCadastrarItens_Click(object sender, EventArgs e)
+        {
+            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+
+            if (tarefaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma tarefa primeiro",
+                "Edição de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            CadastroItensTarefa tela = new CadastroItensTarefa(tarefaSelecionada);
+
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
+                List<Item> itens = tela.ItensAdicionados;
+
+                IRepositorioTarefaEspecifico repositorio = (IRepositorioTarefaEspecifico)repositorioTarefa;
+                
+                repositorio.AdicionarItens(tarefaSelecionada, itens);
+
+                CarregarTarefas();
+            }
+        }
+
+        private void btnAtualizarItens_Click(object sender, EventArgs e)
+        {
+            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+
+            if (tarefaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma tarefa primeiro",
+                "Edição de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            AtualizacaoItensTarefa tela = new AtualizacaoItensTarefa(tarefaSelecionada);
+
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
+                List<Item> itensConcluidos = tela.ItensConcluidos;
+
+                List<Item> itensPendentes = tela.ItensPendentes;
+
+                IRepositorioTarefaEspecifico repositorio = (IRepositorioTarefaEspecifico)repositorioTarefa;
+
+                repositorio.AtualizarItens(tarefaSelecionada, itensConcluidos, itensPendentes);
+
+                CarregarTarefas();
+            }
+        }
+
+        private void btnOrdenarPorPrioridade_Click(object sender, EventArgs e)
+        {
+            CarregarTarefasOrdenadasPorPrioridade();
         }
 
         private void CarregarTarefas()
@@ -127,5 +179,32 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             }
 
         }
+
+        private void CarregarTarefasOrdenadasPorPrioridade()
+        {
+            List<Tarefa> tarefasConcluidas = repositorioTarefa.Filtrar(x => x.StatusTarefa == Status.concluido);
+
+            tarefasConcluidas.Sort();
+
+            listTarefasConcluidas.Items.Clear();
+
+            foreach (Tarefa t in tarefasConcluidas)
+            {
+                listTarefasConcluidas.Items.Add(t);
+            }
+
+            List<Tarefa> tarefasPendentes = repositorioTarefa.Filtrar(x => x.StatusTarefa == Status.pendente);
+
+            tarefasPendentes.Sort();
+
+            listTarefasPendentes.Items.Clear();
+
+            foreach (Tarefa t in tarefasPendentes)
+            {
+                listTarefasPendentes.Items.Add(t);
+            }
+
+        }
+
     }
 }

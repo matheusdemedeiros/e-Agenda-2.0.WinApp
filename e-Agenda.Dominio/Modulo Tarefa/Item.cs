@@ -1,5 +1,4 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
-using System.Collections.Generic;
 using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Tarefa
@@ -8,16 +7,20 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
     {
         #region Atributos
 
-        private readonly string descricao;
         private Status statusItem;
 
         #endregion
 
         #region Construtor
 
+        public Item()
+        {
+
+        }
+
         public Item(string descricao)
         {
-            this.descricao = descricao;
+            this.Descricao = descricao;
             statusItem = Status.pendente;
         }
 
@@ -25,7 +28,25 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
         #region Propriedades
 
-        public bool EstaPendente => statusItem == Status.pendente ? true : false;
+        public bool EstaPendente
+        {
+            get
+            {
+                return statusItem == Status.pendente ? true : false;
+            }
+            set
+            {
+                statusItem = value == true ? Status.pendente : Status.concluido;
+            }
+        }
+
+
+        public void MarcarPendente()
+        {
+            EstaPendente = true;
+        }
+
+        public string Descricao { get; set; }
 
         #endregion
 
@@ -41,7 +62,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(descricao))
+            if (string.IsNullOrEmpty(Descricao))
                 sb.Append("É necessário inserir uma descrição para o item!");
 
             if (sb.Length == 0)
@@ -53,9 +74,9 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         public override string ToString()
         {
             return
-                "\nID: " + id +
-                "\nDescrição: " + descricao +
-                "\nStatus: " + statusItem;
+                "ID: " + id +
+                "\tDescrição: " + Descricao +
+                "\tStatus: " + statusItem;
         }
         
         #endregion

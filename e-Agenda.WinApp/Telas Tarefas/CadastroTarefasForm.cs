@@ -1,12 +1,5 @@
 ﻿using e_Agenda.Dominio.Modulo_Tarefa;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace e_Agenda.WinApp.Telas_Tarefas
@@ -32,7 +25,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             {
                 tarefa = value;
                 txtId.Text = tarefa.id.ToString();
-                txtTitulo.Text = tarefa.Titulo;
+                txtTitulo.Text = tarefa.Descricao;
                 comboBoxPrioridade.Text = tarefa.PrioridadeTarefa;
                 txtDataCriacao.Text = tarefa.DataCriacao.ToString();
                 PreencherCampoDataCriacao();
@@ -43,7 +36,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
         {
             //string tituloTarefa, string dataCriacao, int prioridade
 
-            tarefa.Titulo = txtTitulo.Text;
+            tarefa.Descricao = txtTitulo.Text;
             tarefa.DataCriacao = DateTime.Parse(txtDataCriacao.Text);
             tarefa.PrioridadeTarefa = comboBoxPrioridade.Text;
         }

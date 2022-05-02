@@ -1,48 +1,29 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Tarefa
 {
+    [Serializable]
     public class Tarefa : EntidadeBase, IComparable<Tarefa>
     {
         #region Atributos
 
-        private static int contadorIdItem = 0;
-        private string titulo;
         private int prioridade;
         private Status statusTarefa;
-        private DateTime dataConclusao;
-        private DateTime dataCriacao;
-        public List<Item> itensPendentes = new List<Item>();
-        public List<Item> itensConcluidos = new List<Item>();
+        public List<Item> itens = new List<Item>();
 
         #endregion
 
         #region Propriedades
 
-        public int QuantidadeDeItensTotais => itensPendentes.Count + itensConcluidos.Count;
-
-        public string DataConclusao => StatusTarefa == Status.concluido ? dataConclusao.ToShortDateString() : "Indeterminado";
-
-        public int QuantidadeDeItensPendentes => itensPendentes.Count;
-
-        public int QuantidadeDeItensConcluidos => itensConcluidos.Count;
-
-        public string PercentualConclusao
-        {
-            get
-            {
-                if (QuantidadeDeItensTotais > 0)
-                    return ((100 * QuantidadeDeItensConcluidos) / QuantidadeDeItensTotais).ToString("N2") + " %";
-                else
-                    return "Indeterminado";
-            }
-        }
-
+        public string Descricao { get; set; }
+        public DateTime DataCriacao { get; set; }
+        public DateTime? DataConclusao { get; set; }
+        public List<Item> Itens { get { return itens; } }
         public Status StatusTarefa { get => statusTarefa; }
-
         public string PrioridadeTarefa
         {
             get
@@ -69,85 +50,63 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             }
         }
 
-        public string Titulo { get => titulo; set => titulo = value; }
-        public DateTime DataCriacao { get => dataCriacao; set => dataCriacao = DateTime.TryParse(value.ToString(), out DateTime data) ? data : new DateTime(1, 1, 1); }
-
         #endregion
-
-        #region Construtores
 
         public Tarefa()
         {
-
+            DataCriacao = DateTime.Now;
         }
 
-        public Tarefa(string tituloTarefa, string dataCriacao, int prioridade)
+        public Tarefa(int id, string descricao, string prioridade) : this()
         {
-            this.Titulo = tituloTarefa;
-            //this.DataCriacao = DateTime.TryParse(dataCriacao, out DateTime data) ? data : new DateTime(1, 1, 1);
-            this.prioridade = prioridade;
-
+            base.id = id;
+            Descricao = descricao;
+            DataConclusao = null;
+            PrioridadeTarefa = prioridade;
         }
 
-        public Tarefa(string tituloTarefa, int prioridade)
+        public void ConcluirItem(Item item)
         {
-            this.Titulo = tituloTarefa;
-            this.prioridade = prioridade;
-        }
+            Item itemTarefa = itens.Find(x => x.Equals(item));
 
-        #endregion
+            itemTarefa?.Concluir();
 
-        #region Métodos públicos
+            var percentual = CalcularPercentualConcluido();
 
-        public Item RetornarItemDaListaDePendentes(int id)
-        {
-            return itensPendentes.Find(x => x.id == id);
-        }
-
-        public void AtualizarItensConcluidos()
-        {
-            itensConcluidos.AddRange(itensPendentes.FindAll(x => !x.EstaPendente));
-            itensPendentes.RemoveAll(x => !x.EstaPendente);
-        }
-
-        public void AtualizarTarefa()
-        {
-            AtualizarItensConcluidos();
-
-            if (PercentualConclusao == "100,00 %" && QuantidadeDeItensPendentes == 0 && QuantidadeDeItensConcluidos > 0)
-                ConcluirTarefa();
+            if (percentual == 100)
+                DataConclusao = DateTime.Now;
         }
 
         public void AdicionarItem(Item item)
         {
-            item.id = ++contadorIdItem;
-
-            itensPendentes.Add(item);
+            if (Itens.Exists(x => x.Equals(item)) == false)
+                itens.Add(item);
         }
 
-        public void MostrarItensPendentes()
+        public void MarcarPendente(Item item)
         {
-            foreach (Item item in itensPendentes)
-            {
-                Console.WriteLine(item);
-                Console.WriteLine();
-            }
+            Item itemTarefa = itens.Find(x => x.Equals(item));
+
+            itemTarefa?.MarcarPendente();
         }
 
-        public void MostrarItensConcluidos()
+        public decimal CalcularPercentualConcluido()
         {
-            foreach (Item item in itensConcluidos)
-            {
-                Console.WriteLine(item);
-                Console.WriteLine();
-            }
+            if (itens.Count == 0)
+                return 0;
+
+            int qtdConcluidas = itens.Count(x => !x.EstaPendente);
+
+            var percentualConcluido = (qtdConcluidas / (decimal)itens.Count()) * 100;
+
+            return Math.Round(percentualConcluido, 2);
         }
 
         public override string Validar()
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(Titulo))
+            if (string.IsNullOrEmpty(Descricao))
                 sb.AppendLine("É necessário inserir um título para as tarefas!");
 
             if (DataCriacao.Date == new DateTime(1, 1, 1))
@@ -166,14 +125,11 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         {
             return
             "ID: " + id +
-            "\tTítulo: " + Titulo +
+            "\tDescrição: " + Descricao +
             "\tData de criação: " + DataCriacao.ToShortDateString() +
-            "\tData de conclusão: " + DataConclusao +
+            "\tData de conclusão: " + DataConclusao == null ? "Indeterminado" : DataConclusao +
             "\tPrioridade: " + PrioridadeTarefa +
-            //\t"QTD de itens: " + QuantidadeDeItensTotais + Environment.NewLine +
-            //\t"QTD de itens pendentes: " + QuantidadeDeItensPendentes + Environment.NewLine +
-            //\t"QTD de itens concluídos: " + QuantidadeDeItensConcluidos + Environment.NewLine +
-            "\tPercentual de conclusao: " + PercentualConclusao;
+            "\tPercentual de conclusao: " + CalcularPercentualConcluido();
         }
 
         public int CompareTo(Tarefa other)
@@ -186,16 +142,5 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                 return 0;
         }
 
-        #endregion
-
-        #region Métodos privados
-
-        private void ConcluirTarefa()
-        {
-            dataConclusao = DateTime.Now;
-            statusTarefa = Status.concluido;
-        }
-
-        #endregion
     }
 }

@@ -32,7 +32,7 @@
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnVisualizarPorCargo = new System.Windows.Forms.Button();
+            this.btnOrdenarPorPrioridade = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnVisualizacaoComum = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -40,6 +40,8 @@
             this.listTarefasPendentes = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listTarefasConcluidas = new System.Windows.Forms.ListBox();
+            this.btnCadastrarItens = new System.Windows.Forms.Button();
+            this.btnAtualizarItens = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -78,16 +80,16 @@
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // btnVisualizarPorCargo
+            // btnOrdenarPorPrioridade
             // 
-            this.btnVisualizarPorCargo.BackColor = System.Drawing.Color.White;
-            this.btnVisualizarPorCargo.Location = new System.Drawing.Point(398, 9);
-            this.btnVisualizarPorCargo.Name = "btnVisualizarPorCargo";
-            this.btnVisualizarPorCargo.Size = new System.Drawing.Size(200, 29);
-            this.btnVisualizarPorCargo.TabIndex = 3;
-            this.btnVisualizarPorCargo.Text = "Visualização agrupada por cargos";
-            this.btnVisualizarPorCargo.UseVisualStyleBackColor = false;
-            this.btnVisualizarPorCargo.Click += new System.EventHandler(this.btnVisualizarPorCargo_Click);
+            this.btnOrdenarPorPrioridade.BackColor = System.Drawing.Color.White;
+            this.btnOrdenarPorPrioridade.Location = new System.Drawing.Point(398, 9);
+            this.btnOrdenarPorPrioridade.Name = "btnOrdenarPorPrioridade";
+            this.btnOrdenarPorPrioridade.Size = new System.Drawing.Size(148, 29);
+            this.btnOrdenarPorPrioridade.TabIndex = 3;
+            this.btnOrdenarPorPrioridade.Text = "Ordenar por prioridade";
+            this.btnOrdenarPorPrioridade.UseVisualStyleBackColor = false;
+            this.btnOrdenarPorPrioridade.Click += new System.EventHandler(this.btnOrdenarPorPrioridade_Click);
             // 
             // label1
             // 
@@ -102,7 +104,7 @@
             // btnVisualizacaoComum
             // 
             this.btnVisualizacaoComum.BackColor = System.Drawing.Color.White;
-            this.btnVisualizacaoComum.Location = new System.Drawing.Point(604, 9);
+            this.btnVisualizacaoComum.Location = new System.Drawing.Point(552, 9);
             this.btnVisualizacaoComum.Name = "btnVisualizacaoComum";
             this.btnVisualizacaoComum.Size = new System.Drawing.Size(133, 28);
             this.btnVisualizacaoComum.TabIndex = 7;
@@ -134,12 +136,12 @@
             // listTarefasPendentes
             // 
             this.listTarefasPendentes.FormattingEnabled = true;
+            this.listTarefasPendentes.HorizontalScrollbar = true;
             this.listTarefasPendentes.ItemHeight = 15;
             this.listTarefasPendentes.Location = new System.Drawing.Point(6, 15);
             this.listTarefasPendentes.Name = "listTarefasPendentes";
             this.listTarefasPendentes.Size = new System.Drawing.Size(1004, 289);
             this.listTarefasPendentes.TabIndex = 6;
-            this.listTarefasPendentes.HorizontalScrollbar = true;
             // 
             // tabPage2
             // 
@@ -155,21 +157,45 @@
             // listTarefasConcluidas
             // 
             this.listTarefasConcluidas.FormattingEnabled = true;
+            this.listTarefasConcluidas.HorizontalScrollbar = true;
             this.listTarefasConcluidas.ItemHeight = 15;
             this.listTarefasConcluidas.Location = new System.Drawing.Point(10, 15);
             this.listTarefasConcluidas.Name = "listTarefasConcluidas";
             this.listTarefasConcluidas.Size = new System.Drawing.Size(1000, 289);
             this.listTarefasConcluidas.TabIndex = 7;
-            this.listTarefasConcluidas.HorizontalScrollbar = true;
+            // 
+            // btnCadastrarItens
+            // 
+            this.btnCadastrarItens.BackColor = System.Drawing.Color.White;
+            this.btnCadastrarItens.Location = new System.Drawing.Point(691, 10);
+            this.btnCadastrarItens.Name = "btnCadastrarItens";
+            this.btnCadastrarItens.Size = new System.Drawing.Size(103, 28);
+            this.btnCadastrarItens.TabIndex = 9;
+            this.btnCadastrarItens.Text = "Cadastrar itens";
+            this.btnCadastrarItens.UseVisualStyleBackColor = false;
+            this.btnCadastrarItens.Click += new System.EventHandler(this.btnCadastrarItens_Click);
+            // 
+            // btnAtualizarItens
+            // 
+            this.btnAtualizarItens.BackColor = System.Drawing.Color.White;
+            this.btnAtualizarItens.Location = new System.Drawing.Point(800, 10);
+            this.btnAtualizarItens.Name = "btnAtualizarItens";
+            this.btnAtualizarItens.Size = new System.Drawing.Size(111, 28);
+            this.btnAtualizarItens.TabIndex = 8;
+            this.btnAtualizarItens.Text = "Atualizar itens";
+            this.btnAtualizarItens.UseVisualStyleBackColor = false;
+            this.btnAtualizarItens.Click += new System.EventHandler(this.btnAtualizarItens_Click);
             // 
             // TelaListagemTarefas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAtualizarItens);
+            this.Controls.Add(this.btnCadastrarItens);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnVisualizacaoComum);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnVisualizarPorCargo);
+            this.Controls.Add(this.btnOrdenarPorPrioridade);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnInserir);
@@ -189,7 +215,7 @@
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnVisualizarPorCargo;
+        private System.Windows.Forms.Button btnOrdenarPorPrioridade;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnVisualizacaoComum;
         private System.Windows.Forms.TabControl tabControl1;
@@ -197,5 +223,7 @@
         private System.Windows.Forms.ListBox listTarefasPendentes;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox listTarefasConcluidas;
+        private System.Windows.Forms.Button btnCadastrarItens;
+        private System.Windows.Forms.Button btnAtualizarItens;
     }
 }
