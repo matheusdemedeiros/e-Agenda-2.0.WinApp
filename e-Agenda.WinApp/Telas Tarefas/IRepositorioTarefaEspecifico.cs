@@ -1,9 +1,10 @@
 ﻿using e_Agenda.Dominio.Modulo_Tarefa;
+using System;
 using System.Collections.Generic;
 
 namespace e_Agenda.WinApp.Telas_Tarefas
 {
-    public interface IRepositorioTarefaEspecifico
+    public interface IRepositorioTarefaEspecifico : IConvertible
     {
         public void AdicionarItens(Tarefa tarefaSelecionada, List<Item> itens);
 

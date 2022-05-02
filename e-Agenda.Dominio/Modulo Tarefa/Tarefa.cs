@@ -23,7 +23,6 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         public DateTime DataCriacao { get; set; }
         public DateTime? DataConclusao { get; set; }
         public List<Item> Itens { get { return itens; } }
-        public Status StatusTarefa { get => statusTarefa; }
         public string PrioridadeTarefa
         {
             get
@@ -49,6 +48,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                     prioridade = 3;
             }
         }
+        public Status StatusTarefa { get => statusTarefa; set => statusTarefa = value; }
 
         #endregion
 
@@ -65,18 +65,6 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             PrioridadeTarefa = prioridade;
         }
 
-        public void ConcluirItem(Item item)
-        {
-            Item itemTarefa = itens.Find(x => x.Equals(item));
-
-            itemTarefa?.Concluir();
-
-            var percentual = CalcularPercentualConcluido();
-
-            if (percentual == 100)
-                DataConclusao = DateTime.Now;
-        }
-
         public void AdicionarItem(Item item)
         {
             if (Itens.Exists(x => x.Equals(item)) == false)
@@ -88,6 +76,18 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             Item itemTarefa = itens.Find(x => x.Equals(item));
 
             itemTarefa?.MarcarPendente();
+        }
+
+        public void ConcluirItem(Item item)
+        {
+            Item itemTarefa = itens.Find(x => x.Equals(item));
+
+            itemTarefa?.Concluir();
+
+            var percentual = CalcularPercentualConcluido();
+
+            if (percentual == 100)
+                DataConclusao = DateTime.Now;
         }
 
         public decimal CalcularPercentualConcluido()
@@ -123,13 +123,17 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
         public override string ToString()
         {
-            return
-            "ID: " + id +
-            "\tDescrição: " + Descricao +
-            "\tData de criação: " + DataCriacao.ToShortDateString() +
-            "\tData de conclusão: " + DataConclusao == null ? "Indeterminado" : DataConclusao +
-            "\tPrioridade: " + PrioridadeTarefa +
-            "\tPercentual de conclusao: " + CalcularPercentualConcluido();
+            var dataConclusao = "";
+            if (DataConclusao == null)
+                dataConclusao = "Indeterminado";
+            else
+                dataConclusao = DataConclusao.ToString();
+
+            string retorno =
+            $"ID: { id } \tDescrição: { Descricao} \tData de criação: { DataCriacao.ToString()} " +
+            $"\tData de conclusão: {dataConclusao}   \tPrioridade: { PrioridadeTarefa } " +
+            $"\tPercentual de conclusao: { CalcularPercentualConcluido() }  % ";
+            return retorno;
         }
 
         public int CompareTo(Tarefa other)

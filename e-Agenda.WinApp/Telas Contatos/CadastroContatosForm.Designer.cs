@@ -35,12 +35,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtEmpresa = new System.Windows.Forms.TextBox();
             this.txtCargo = new System.Windows.Forms.TextBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnLimparCampos = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -102,13 +102,6 @@
             this.txtEmail.Size = new System.Drawing.Size(282, 23);
             this.txtEmail.TabIndex = 6;
             // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(83, 85);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(282, 23);
-            this.txtTelefone.TabIndex = 7;
-            // 
             // txtEmpresa
             // 
             this.txtEmpresa.Location = new System.Drawing.Point(83, 114);
@@ -157,17 +150,25 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(83, 85);
+            this.txtTelefone.Mask = "(00) 0 0000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(282, 23);
+            this.txtTelefone.TabIndex = 13;
+            // 
             // CadastroContatosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 224);
+            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnLimparCampos);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.txtCargo);
             this.Controls.Add(this.txtEmpresa);
-            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label5);
@@ -195,11 +196,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtEmpresa;
         private System.Windows.Forms.TextBox txtCargo;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnLimparCampos;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
     }
 }

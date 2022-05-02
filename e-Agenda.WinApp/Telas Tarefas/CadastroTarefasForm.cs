@@ -34,8 +34,6 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            //string tituloTarefa, string dataCriacao, int prioridade
-
             tarefa.Descricao = txtTitulo.Text;
             tarefa.DataCriacao = DateTime.Parse(txtDataCriacao.Text);
             tarefa.PrioridadeTarefa = comboBoxPrioridade.Text;

@@ -79,22 +79,42 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
         #region Métodos privados
 
+        //private bool ValidarTelefone()
+        //{
+        //    if (!string.IsNullOrEmpty(Telefone))
+        //        if (Telefone.Length >= 10)
+        //            if (long.TryParse(Telefone, out long res))
+        //                return true;
+        //    return false;
+        //}
+
+
         private bool ValidarTelefone()
         {
-            if (!string.IsNullOrEmpty(Telefone))
-                if (Telefone.Length >= 10)
-                    if (long.TryParse(Telefone, out long res))
-                        return true;
-            return false;
+            bool telefoneEstaValido = false;
+
+            // utilizando o método Replace() para remover caracteres especiais da string
+            string telefoneProcessado = Telefone.Replace("-", string.Empty)
+                                                .Replace(" ", string.Empty)
+                                                .Replace(")", string.Empty)
+                                                .Replace("(", string.Empty);
+
+            if (telefoneProcessado.Length  < 10)
+                return telefoneEstaValido;
+
+            telefoneEstaValido = System.Text.RegularExpressions.Regex.IsMatch(telefoneProcessado, @"^[0-9]*$");
+
+            return telefoneEstaValido;
         }
+
 
         private bool ValidarEmail()
         {
-            if (!string.IsNullOrEmpty(Email))
-                if (Email.Length >= 6)
-                    if (Email.Contains("@") && Email.Contains("."))
-                        return true;
-            return false;
+            // podemos utilizar o valor discard (representado pelo _ (underscore))
+            // para descartar argumento out do método
+            bool emailEstaValido = System.Net.Mail.MailAddress.TryCreate(Email, out _);
+
+            return emailEstaValido;
         }
 
         #endregion

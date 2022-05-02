@@ -53,5 +53,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
             contato.Empresa = txtEmpresa.Text;
             contato.Cargo = txtCargo.Text;
         }
+
     }
 }

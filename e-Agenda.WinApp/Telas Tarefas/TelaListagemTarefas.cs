@@ -12,7 +12,6 @@ namespace e_Agenda.WinApp.Telas_Tarefas
     {
 
         IRepositorio<Tarefa> repositorioTarefa;
-
         public TelaListagemTarefas()
         {
             SerializadorEntidadeJson<Tarefa> serializador = new SerializadorEntidadeJson<Tarefa>();
@@ -118,8 +117,8 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             {
                 List<Item> itens = tela.ItensAdicionados;
 
-                IRepositorioTarefaEspecifico repositorio = (IRepositorioTarefaEspecifico)repositorioTarefa;
-                
+                var repositorio = repositorioTarefa as IRepositorioTarefaEspecifico;
+
                 repositorio.AdicionarItens(tarefaSelecionada, itens);
 
                 CarregarTarefas();

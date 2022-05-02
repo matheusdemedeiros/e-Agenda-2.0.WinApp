@@ -1,4 +1,5 @@
-﻿using e_Agenda.Dominio.Modulo_Tarefa;
+﻿using e_Agenda.Dominio.Compartilhado;
+using e_Agenda.Dominio.Modulo_Tarefa;
 using System.Collections.Generic;
 
 namespace e_Agenda.Dominio.Modulo_Tarefa
