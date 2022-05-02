@@ -25,7 +25,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             {
                 tarefa = value;
                 txtId.Text = tarefa.id.ToString();
-                txtTitulo.Text = tarefa.Descricao;
+                txtTitulo.Text = tarefa.Titulo;
                 comboBoxPrioridade.Text = tarefa.PrioridadeTarefa;
                 txtDataCriacao.Text = tarefa.DataCriacao.ToString();
                 PreencherCampoDataCriacao();
@@ -34,7 +34,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            tarefa.Descricao = txtTitulo.Text;
+            tarefa.Titulo = txtTitulo.Text;
             tarefa.DataCriacao = DateTime.Parse(txtDataCriacao.Text);
             tarefa.PrioridadeTarefa = comboBoxPrioridade.Text;
         }

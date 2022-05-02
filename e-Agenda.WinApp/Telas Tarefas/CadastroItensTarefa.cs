@@ -17,7 +17,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
 
             this.tarefa = tarefa;
 
-            labelTituloTarefa.Text = tarefa.Descricao;
+            labelTituloTarefa.Text = tarefa.Titulo;
 
             foreach (Item item in tarefa.Itens)
             {

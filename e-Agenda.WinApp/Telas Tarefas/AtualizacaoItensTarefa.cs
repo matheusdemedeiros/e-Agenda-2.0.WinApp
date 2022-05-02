@@ -20,7 +20,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             InitializeComponent();
             this.tarefa = tarefa;
 
-            labelTituloTarefa.Text = tarefa.Descricao;
+            labelTituloTarefa.Text = tarefa.Titulo;
 
             CarregarItensTarefa(tarefa);
         }

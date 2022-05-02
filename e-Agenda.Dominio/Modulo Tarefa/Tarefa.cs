@@ -19,7 +19,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
         #region Propriedades
 
-        public string Descricao { get; set; }
+        public string Titulo { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime? DataConclusao { get; set; }
         public List<Item> Itens { get { return itens; } }
@@ -60,7 +60,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         public Tarefa(int id, string descricao, string prioridade) : this()
         {
             base.id = id;
-            Descricao = descricao;
+            Titulo = descricao;
             DataConclusao = null;
             PrioridadeTarefa = prioridade;
         }
@@ -106,7 +106,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         {
             StringBuilder sb = new StringBuilder();
 
-            if (string.IsNullOrEmpty(Descricao))
+            if (string.IsNullOrEmpty(Titulo))
                 sb.AppendLine("É necessário inserir um título para as tarefas!");
 
             if (DataCriacao.Date == new DateTime(1, 1, 1))
@@ -130,7 +130,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
                 dataConclusao = DataConclusao.ToString();
 
             string retorno =
-            $"ID: { id } \tDescrição: { Descricao} \tData de criação: { DataCriacao.ToString()} " +
+            $"ID: { id } \tTítulo: { Titulo} \tData de criação: { DataCriacao.ToString()} " +
             $"\tData de conclusão: {dataConclusao}   \tPrioridade: { PrioridadeTarefa } " +
             $"\tPercentual de conclusao: { CalcularPercentualConcluido() }  % ";
             return retorno;
