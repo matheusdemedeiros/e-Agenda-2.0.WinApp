@@ -7,6 +7,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
     public class Contato : EntidadeBase
     {
         private int quantidadeDeCompromissosRelacionados;
+        private string nomeTelefone;
 
         public string Nome { get; set; }
 
@@ -18,6 +19,8 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
         public string Cargo { get; set; }
 
+        public string NomeTelefone { get { return Nome + " - " + Telefone; } set => nomeTelefone = value; }
+
         public int QuantidadeDeCompromissosRelacionados { get => quantidadeDeCompromissosRelacionados; set => quantidadeDeCompromissosRelacionados = value; }
 
         public Contato()
@@ -25,20 +28,14 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
         }
 
-        public Contato(string nome, string email, string telefone, string empresa, string cargo)
+        public Contato(string nome, string email, string telefone, string empresa, string cargo, string nomeTelefone)
         {
-            this.Nome = nome;
-            this.Email = email;
-            this.Telefone = telefone;
-            this.Empresa = empresa;
-            this.Cargo = cargo;
-        }
-
-        public Contato(string nome, string email, string telefone)
-        {
-            this.Nome = nome;
-            this.Email = email;
-            this.Telefone = telefone;
+            Nome = nome;
+            Email = email;
+            Telefone = telefone;
+            Empresa = empresa;
+            Cargo = cargo;
+            NomeTelefone = nomeTelefone;
         }
 
         public override string Validar()
@@ -86,12 +83,23 @@ namespace e_Agenda.Dominio.Modulo_Contato
                    Telefone == contato.Telefone &&
                    Empresa == contato.Empresa &&
                    Cargo == contato.Cargo &&
+                   NomeTelefone == contato.NomeTelefone &&
                    QuantidadeDeCompromissosRelacionados == contato.QuantidadeDeCompromissosRelacionados;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(id, quantidadeDeCompromissosRelacionados, Nome, Email, Telefone, Empresa, Cargo, QuantidadeDeCompromissosRelacionados);
+            HashCode hash = new HashCode();
+            hash.Add(id);
+            hash.Add(quantidadeDeCompromissosRelacionados);
+            hash.Add(Nome);
+            hash.Add(Email);
+            hash.Add(Telefone);
+            hash.Add(Empresa);
+            hash.Add(Cargo);
+            hash.Add(NomeTelefone);
+            hash.Add(QuantidadeDeCompromissosRelacionados);
+            return hash.ToHashCode();
         }
 
         private bool ValidarTelefone()
@@ -111,7 +119,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
             return telefoneEstaValido;
         }
-        
+
         private bool ValidarEmail()
         {
             // podemos utilizar o valor discard (representado pelo _ (underscore))
@@ -123,6 +131,5 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
             return emailEstaValido;
         }
-
     }
 }

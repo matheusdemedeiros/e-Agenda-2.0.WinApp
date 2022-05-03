@@ -51,7 +51,7 @@ namespace e_Agenda.WinApp.Telas_Compromissos
                 else
                 {
                     Contato contatoIncrementar = repositorioContatos.SelecionarRegistro(x => x.id == tela.Compromisso.Contato.id);
-
+                    //tela.Compromisso.Contato.QuantidadeDeCompromissosRelacionados++;
                     contatoIncrementar.QuantidadeDeCompromissosRelacionados++;
 
                     repositorioContatos.Editar(x => x.id == contatoIncrementar.id, contatoIncrementar);
