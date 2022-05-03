@@ -297,7 +297,6 @@
         private System.Windows.Forms.ListBox listCompromissosFuturos;
         private System.Windows.Forms.Button btnCompromissosSemana;
         private System.Windows.Forms.Button btnCompromissosDia;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DateTimePicker dateTimePickerDataFimPeriodo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

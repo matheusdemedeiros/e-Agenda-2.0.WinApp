@@ -20,6 +20,11 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             if (validacao != "REGISTRO_VALIDO")
                 return validacao.ToString();
 
+            string validacaoAdjacentes = ValidarHorariosAdjacentes(novaEntidade);
+
+            if (validacaoAdjacentes != "REGISTRO_VALIDO")
+                return validacaoAdjacentes;
+
             novaEntidade.id = ++contadorId;
 
             novaEntidade.Contato.QuantidadeDeCompromissosRelacionados += 1;
@@ -38,8 +43,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             {
                 if (condicao(entidade))
                 {
-                    //entidade.Contato.QuantidadeDeCompromissosRelacionados -= 1;
-
                     compromissos.Remove(entidade);
 
                     serializador.GravarEntidadesEmArquivo(compromissos);
@@ -91,6 +94,33 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return registros.FindAll(x => x.DataInicio >= DateTime.Today
             && x.DataInicio <= dataFinal && x.Passou == false);
         }
+
+        private string ValidarHorariosAdjacentes(Compromisso compromisso)
+        {
+            List<Compromisso> compromissosDoMesmoDia = SelecionarTodos()
+                .FindAll(x => x.DataInicio == compromisso.DataInicio && x.Passou == false);
+
+            if (compromissosDoMesmoDia.Count == 0)
+                return "REGISTRO_VALIDO";
+
+            foreach (var item in compromissosDoMesmoDia)
+            {
+                //termina no meio
+                if (compromisso.HoraTermino >= item.HoraInicio && compromisso.HoraTermino <= item.HoraTermino)
+                    return $"Horário ocupado pelo compromisso que inicia às " +
+                        $"{item.HoraInicio.ToShortTimeString()} hs e termina às {item.HoraTermino.ToShortTimeString()}hs.";
+                
+                //comeca no meio
+                if (compromisso.HoraInicio >= item.HoraInicio && compromisso.HoraInicio <= item.HoraTermino)
+                    return $"Horário ocupado pelo compromisso que inicia às " +
+                        $"{item.HoraInicio.ToShortTimeString()} hs e termina às {item.HoraTermino.ToShortTimeString()} hs.";
+
+            }
+
+            return "REGISTRO_VALIDO";
+
+        }
+
 
     }
 }

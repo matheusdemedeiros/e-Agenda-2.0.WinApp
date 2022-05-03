@@ -225,6 +225,5 @@
         private System.Windows.Forms.ListBox listTarefasConcluidas;
         private System.Windows.Forms.Button btnCadastrarItens;
         private System.Windows.Forms.Button btnAtualizarItens;
-        private System.Windows.Forms.TabPage tabPage1;
     }
 }
