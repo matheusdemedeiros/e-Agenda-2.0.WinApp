@@ -54,7 +54,7 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
         //    return Editar(x => x.id == idSelecionado, novaEntidade);
         //}
 
-        public string Editar(Predicate<T> condicao, T novaEntidade)
+        public virtual string Editar(Predicate<T> condicao, T novaEntidade)
         {
 
             string validacao = novaEntidade.Validar();

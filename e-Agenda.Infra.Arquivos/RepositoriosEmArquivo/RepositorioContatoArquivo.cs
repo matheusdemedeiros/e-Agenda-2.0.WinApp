@@ -1,9 +1,9 @@
 ﻿
 using e_Agenda.Dominio.Compartilhado;
 using e_Agenda.Dominio.Modulo_Contato;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 {
@@ -37,6 +37,25 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             serializador.GravarEntidadesEmArquivo(registros);
 
             return "REGISTRO_VALIDO";
+        }
+
+        public override string Excluir(Predicate<Contato> condicao)
+        {
+            foreach (Contato entidade in registros)
+            {
+                if (condicao(entidade))
+                {
+                    if (entidade.QuantidadeDeCompromissosRelacionados > 0)
+                        return "* O contato não pode ser excluído pois está relacionado à um ou mais compromissos!";
+
+                    registros.Remove(entidade);
+
+                    serializador.GravarEntidadesEmArquivo(registros);
+
+                    return "EXCLUSAO_REALIZADA";
+                }
+            }
+            return "EXCLUSAO_NAOREALIZADA";
         }
 
         private string ValidaContatosComDadosIguais(Contato contato)

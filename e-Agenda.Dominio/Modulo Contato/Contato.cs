@@ -7,6 +7,8 @@ namespace e_Agenda.Dominio.Modulo_Contato
     [Serializable]
     public class Contato : EntidadeBase
     {
+
+        private int quantidadeDeCompromissosRelacionados;
         #region Propriedades
 
         public string Nome { get; set; }
@@ -14,7 +16,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
         public string Telefone { get; set; }
         public string Empresa { get; set; }
         public string Cargo { get; set; }
-        public int QuantidadeDeCompromissosRelacionados { get; set; }
+        public int QuantidadeDeCompromissosRelacionados { get => quantidadeDeCompromissosRelacionados; set => quantidadeDeCompromissosRelacionados = value; }
 
         #endregion
 

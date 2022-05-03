@@ -110,11 +110,11 @@ namespace e_Agenda.WinApp.Telas_Contatos
             {
                 string conseguiuExcluir = repositorioContato.Excluir(x => x.id == contatoSelecionado.id);
 
-                if (conseguiuExcluir == "EXCLUSAO_NAOREALIZADA")
-                    MessageBox.Show("Erro na exclusão do contato", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                else
-                {
+                if (conseguiuExcluir == "EXCLUSAO_REALIZADA")
                     MessageBox.Show("Contato excluído com sucesso", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show(conseguiuExcluir, "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                {
 
                     CarregarContatos();
                 }

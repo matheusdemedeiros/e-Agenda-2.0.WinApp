@@ -37,7 +37,7 @@ namespace e_Agenda.WinApp.Telas_Compromissos
                 compromisso = value;
                 txtAssunto.Text = compromisso.Assunto;
                 txtLocal.Text = compromisso.Local;
-                dateTimePickerDataCompromisso.Value = compromisso.DataInicio == new DateTime(1, 1, 1) ? DateTime.Now : compromisso.DataInicio;
+                dateTimePickerDataCompromisso.Value = compromisso.DataInicio == new DateTime(1, 1, 1) ? DateTime.Today : compromisso.DataInicio;
                 dateTimePickerHoraInicio.Value = compromisso.HoraInicio == new DateTime(1, 1, 1) ? DateTime.Now : compromisso.HoraInicio; ;
                 dateTimePickerHoraTermino.Value = compromisso.HoraTermino == new DateTime(1, 1, 1) ? DateTime.Now : compromisso.HoraTermino; ;
                 comboBoxContato.SelectedItem = compromisso.Contato;
@@ -70,7 +70,7 @@ namespace e_Agenda.WinApp.Telas_Compromissos
 
         private void Inicializar()
         {
-            dateTimePickerDataCompromisso.MinDate = DateTime.Now;
+            dateTimePickerDataCompromisso.MinDate = DateTime.Today;
 
             PopularNomesContatosCombobox();
 
