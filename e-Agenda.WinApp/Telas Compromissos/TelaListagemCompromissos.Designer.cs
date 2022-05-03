@@ -101,7 +101,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(61, 10);
+            this.label1.Location = new System.Drawing.Point(15, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 28);
             this.label1.TabIndex = 5;
@@ -113,7 +113,7 @@
             this.btnLimparFiltro.Location = new System.Drawing.Point(702, 10);
             this.btnLimparFiltro.Name = "btnLimparFiltro";
             this.btnLimparFiltro.Size = new System.Drawing.Size(111, 28);
-            this.btnLimparFiltro.TabIndex = 7;
+            this.btnLimparFiltro.TabIndex = 4;
             this.btnLimparFiltro.Text = "Limpar filtro";
             this.btnLimparFiltro.UseVisualStyleBackColor = false;
             this.btnLimparFiltro.Click += new System.EventHandler(this.btnLimparFiltro_Click);
@@ -126,7 +126,7 @@
             this.tabControlCompromissos.Name = "tabControlCompromissos";
             this.tabControlCompromissos.SelectedIndex = 0;
             this.tabControlCompromissos.Size = new System.Drawing.Size(1024, 347);
-            this.tabControlCompromissos.TabIndex = 8;
+            this.tabControlCompromissos.TabIndex = 7;
             this.tabControlCompromissos.SelectedIndexChanged += new System.EventHandler(this.tabControlCompromissos_SelectedIndexChanged);
             // 
             // tabPageCompromissosFuturos
@@ -154,7 +154,7 @@
             this.dateTimePickerHoraFimPeriodo.Name = "dateTimePickerHoraFimPeriodo";
             this.dateTimePickerHoraFimPeriodo.ShowUpDown = true;
             this.dateTimePickerHoraFimPeriodo.Size = new System.Drawing.Size(61, 23);
-            this.dateTimePickerHoraFimPeriodo.TabIndex = 17;
+            this.dateTimePickerHoraFimPeriodo.TabIndex = 11;
             // 
             // dateTimePickerHoraInicioPeriodo
             // 
@@ -164,7 +164,7 @@
             this.dateTimePickerHoraInicioPeriodo.Name = "dateTimePickerHoraInicioPeriodo";
             this.dateTimePickerHoraInicioPeriodo.ShowUpDown = true;
             this.dateTimePickerHoraInicioPeriodo.Size = new System.Drawing.Size(61, 23);
-            this.dateTimePickerHoraInicioPeriodo.TabIndex = 16;
+            this.dateTimePickerHoraInicioPeriodo.TabIndex = 9;
             // 
             // dateTimePickerDataFimPeriodo
             // 
@@ -173,7 +173,7 @@
             this.dateTimePickerDataFimPeriodo.Name = "dateTimePickerDataFimPeriodo";
             this.dateTimePickerDataFimPeriodo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerDataFimPeriodo.Size = new System.Drawing.Size(257, 23);
-            this.dateTimePickerDataFimPeriodo.TabIndex = 12;
+            this.dateTimePickerDataFimPeriodo.TabIndex = 10;
             this.dateTimePickerDataFimPeriodo.Value = new System.DateTime(2022, 5, 2, 20, 22, 9, 0);
             // 
             // label3
@@ -201,7 +201,7 @@
             this.dateTimePickerDataInicioPeriodo.Name = "dateTimePickerDataInicioPeriodo";
             this.dateTimePickerDataInicioPeriodo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerDataInicioPeriodo.Size = new System.Drawing.Size(257, 23);
-            this.dateTimePickerDataInicioPeriodo.TabIndex = 9;
+            this.dateTimePickerDataInicioPeriodo.TabIndex = 8;
             this.dateTimePickerDataInicioPeriodo.Value = new System.DateTime(2022, 5, 2, 20, 22, 9, 0);
             // 
             // listCompromissosFuturos
@@ -212,7 +212,7 @@
             this.listCompromissosFuturos.Location = new System.Drawing.Point(6, 45);
             this.listCompromissosFuturos.Name = "listCompromissosFuturos";
             this.listCompromissosFuturos.Size = new System.Drawing.Size(1004, 259);
-            this.listCompromissosFuturos.TabIndex = 7;
+            this.listCompromissosFuturos.TabIndex = 12;
             // 
             // tabPageCompromissosPassados
             // 
@@ -233,7 +233,7 @@
             this.listCompromissosPassados.Location = new System.Drawing.Point(6, 15);
             this.listCompromissosPassados.Name = "listCompromissosPassados";
             this.listCompromissosPassados.Size = new System.Drawing.Size(1004, 289);
-            this.listCompromissosPassados.TabIndex = 6;
+            this.listCompromissosPassados.TabIndex = 13;
             // 
             // btnCompromissosSemana
             // 
@@ -241,7 +241,7 @@
             this.btnCompromissosSemana.Location = new System.Drawing.Point(813, 10);
             this.btnCompromissosSemana.Name = "btnCompromissosSemana";
             this.btnCompromissosSemana.Size = new System.Drawing.Size(111, 28);
-            this.btnCompromissosSemana.TabIndex = 9;
+            this.btnCompromissosSemana.TabIndex = 5;
             this.btnCompromissosSemana.Text = "Semana atual";
             this.btnCompromissosSemana.UseVisualStyleBackColor = false;
             this.btnCompromissosSemana.Click += new System.EventHandler(this.btnCompromissosSemana_Click);
@@ -252,7 +252,7 @@
             this.btnCompromissosDia.Location = new System.Drawing.Point(924, 10);
             this.btnCompromissosDia.Name = "btnCompromissosDia";
             this.btnCompromissosDia.Size = new System.Drawing.Size(111, 28);
-            this.btnCompromissosDia.TabIndex = 8;
+            this.btnCompromissosDia.TabIndex = 6;
             this.btnCompromissosDia.Text = "Hoje";
             this.btnCompromissosDia.UseVisualStyleBackColor = false;
             this.btnCompromissosDia.Click += new System.EventHandler(this.btnCompromissosDia_Click);
@@ -261,6 +261,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.btnCompromissosDia);
             this.Controls.Add(this.btnCompromissosSemana);
             this.Controls.Add(this.tabControlCompromissos);

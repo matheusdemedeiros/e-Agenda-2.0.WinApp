@@ -7,17 +7,9 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 {
     public class RepositorioBaseArquivo<T> where T : EntidadeBase
     {
-        #region Atributos
-
         protected readonly ISerializadorEntidade<T> serializador;
-
         protected readonly List<T> registros;
-
         protected int contadorId;
-
-        #endregion
-
-        #region Construtor
 
         public RepositorioBaseArquivo(ISerializadorEntidade<T> serializador)
         {
@@ -28,10 +20,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             if (registros.Count > 0)
                 contadorId = registros.Max(x => x.id);
         }
-
-        #endregion
-
-        #region Métodos públicos
 
         public virtual string Inserir(T novaEntidade)
         {
@@ -48,12 +36,7 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
             return "REGISTRO_VALIDO";
         }
-
-        //public bool Editar(int idSelecionado, T novaEntidade)
-        //{
-        //    return Editar(x => x.id == idSelecionado, novaEntidade);
-        //}
-
+        
         public virtual string Editar(Predicate<T> condicao, T novaEntidade)
         {
 
@@ -81,11 +64,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return "REGISTRO_INVALIDO";
         }
 
-        public string Excluir(int idSelecionado)
-        {
-            return Excluir(x => x.id == idSelecionado);
-        }
-
         public virtual string Excluir(Predicate<T> condicao)
         {
             foreach (T entidade in registros)
@@ -100,11 +78,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
                 }
             }
             return "EXCLUSAO_NAOREALIZADA";
-        }
-
-        public T SelecionarRegistro(int idSelecionado)
-        {
-            return SelecionarRegistro(x => x.id == idSelecionado);
         }
 
         public T SelecionarRegistro(Predicate<T> condicao)
@@ -133,12 +106,7 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
             return registrosFiltrados;
         }
-
-        public bool ExisteRegistro(int idSelecionado)
-        {
-            return ExisteRegistro(x => x.id == idSelecionado);
-        }
-
+        
         public bool ExisteRegistro(Predicate<T> condicao)
         {
             foreach (T entidade in registros)
@@ -147,7 +115,5 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
                 
             return false;
         }
-        
-        #endregion
     }
 }

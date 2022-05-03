@@ -1,31 +1,29 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
-using System;
 using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Contato
 {
-    [Serializable]
     public class Contato : EntidadeBase
     {
-
         private int quantidadeDeCompromissosRelacionados;
-        #region Propriedades
 
         public string Nome { get; set; }
+        
         public string Email { get; set; }
+        
         public string Telefone { get; set; }
+        
         public string Empresa { get; set; }
+        
         public string Cargo { get; set; }
+        
         public int QuantidadeDeCompromissosRelacionados { get => quantidadeDeCompromissosRelacionados; set => quantidadeDeCompromissosRelacionados = value; }
-
-        #endregion
-
-        #region Construtores
 
         public Contato()
         {
 
         }
+        
         public Contato(string nome, string email, string telefone, string empresa, string cargo)
         {
             this.Nome = nome;
@@ -34,16 +32,13 @@ namespace e_Agenda.Dominio.Modulo_Contato
             this.Empresa = empresa;
             this.Cargo = cargo;
         }
+        
         public Contato(string nome, string email, string telefone)
         {
             this.Nome = nome;
             this.Email = email;
             this.Telefone = telefone;
         }
-
-        #endregion
-
-        #region Métodos públicos
 
         public override string Validar()
         {
@@ -80,10 +75,6 @@ namespace e_Agenda.Dominio.Modulo_Contato
             return retorno;
         }
 
-        #endregion
-
-        #region Métodos privados
-
         private bool ValidarTelefone()
         {
             bool telefoneEstaValido = false;
@@ -101,8 +92,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
             return telefoneEstaValido;
         }
-
-
+        
         private bool ValidarEmail()
         {
             // podemos utilizar o valor discard (representado pelo _ (underscore))
@@ -114,7 +104,5 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
             return emailEstaValido;
         }
-
-        #endregion
     }
 }

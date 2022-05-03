@@ -11,7 +11,7 @@ namespace e_Agenda.WinApp.Telas_Tarefas
         public CadastroTarefasForm()
         {
             InitializeComponent();
-            //PreencherCampoDataCriacao();
+
             comboBoxPrioridade.SelectedIndex = 0;
         }
 

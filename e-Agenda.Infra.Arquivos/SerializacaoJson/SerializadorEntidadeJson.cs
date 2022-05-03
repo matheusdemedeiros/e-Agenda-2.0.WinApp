@@ -45,5 +45,6 @@ namespace e_Agenda.Infra.Arquivos.SerializacaoJson
 
             File.WriteAllText(arquivoEntidades, entidadesJson);
         }
+        
     }
 }

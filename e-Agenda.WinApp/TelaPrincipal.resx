@@ -57,4 +57,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAMQOAADEDgAAAAAAAAAA
+        AACMEFv/jRFc/40QXP+PEV3/kBFe/5ARXv+OEV3/khJg/5ISX/+PEV7/lBJh/5QSYf+WEmL/lhJi/5YS
+        Yv+WEmL/iBBZ/4kQWf+KEFr/ixBb/4wQW/+EDlX/bQpG/48RXf+FD1b/SQMt/4IPVf96DE//hA9V/5US
+        Yf+VEmL/lhJi/4QOVv+FD1b/hg9X/4cPWP+FDlb/TAQw/2IIPv/rVtv/61bb/zsAI/9tOE7/cQpJ/0cC
+        LP+JEFn/kRFf/5IRX/+ADlP/gQ5U/4IOVP+BDlT/oVRg/zsAI/9OBDH/61bb/+tW2/87ACP/bThO/204
+        Tv86ACP/TwQx/4sPWv+OEF3/fg5R/38OUv9+DlH/oVRg//7+/v/+/v7//v7+//7+/v/rVtv/61bb/204
+        Tv9tOE7/bThO/zsAI/9bBjn/ixBb/3oMTv97DU//oVRg/6FUYP/+/v7//v7+//7+/v/+/v7/61bb/+tW
+        2//rVtv/bThO/204Tv9GDi7/OwAk/3sNUP92DEz/dwxN/6FUYP/WtLn//v7+/z0BJf/+/v7/9a3t/+tW
+        2//rVtv/61bb/204Tv9tOE7/bThO/zoAI/91C0v/cwtK/3QMS/9tOE7/OgAj//7+/v/+/v7//v7+/+tW
+        2//rVtv/OgAj/2AHPv/rVtv/bThO/204Tv86ACP/cwtL/28LSP9wC0j/bThO/204Tv86ACP/QwIp//7+
+        /v/rVtv/61bb/zoAI//rVtv/61bb/6FUYP9tOE7/OwAk/3ILSf9rCUX/bApF/204Tv9tOE7//v7+//7+
+        /v/+/v7/61bb/+tW2//rVtv/61bb/+tW2/+hVGD/oVRg/08EMv94DE3/aAlC/2kJQ/9tOE7/bThO/204
+        Tv/+/v7//v7+/+tW2//rVtv/61bb/+tW2/+hVGD/oVRg/0cCLP9yCkn/dgtM/2UJQP9mCUH/ZglC/204
+        Tv9tOE7/QwIp/1MFM/9rCkX/bApF/20KRv+hVGD/oVRg/0ABJ/9qCkX/cgtJ/3MLSv9hCD3/Ygg+/2II
+        P/9kCD//bThO/18HPf9UBTT/ZwlC/2gJQ/9pCUP/oVRg/6FUYP9gBz7/bQpG/24KRv9vCkf/XQc7/14H
+        PP9fBzz/YAc9/2EHPv9iBz7/YQg+/2QIQP9kCED/ZQhA/6FUYP9mCUH/aAlC/2kJQ/9qCUT/awlE/1oH
+        Of9bBzr/XAc6/10HO/9eBzz/Xwc8/2AIPf9hCD7/Ygg+/2IIP/9kCUD/ZAhA/2UJQf9nCUL/ZwlC/2gJ
+        Q/9WBjb/VwY3/1gGOP9ZBjj/Wgc5/1sGOv9cBzr/XQc7/14HPP9fBzz/YAg9/2EIPf9hCD7/Ywg//2MI
+        P/9kCED/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

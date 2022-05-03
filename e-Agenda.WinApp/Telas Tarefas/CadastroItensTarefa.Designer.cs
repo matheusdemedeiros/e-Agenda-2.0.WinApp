@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroItensTarefa));
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.txtDescricaoItem = new System.Windows.Forms.TextBox();
@@ -40,35 +41,38 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(319, 231);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(72, 39);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Size = new System.Drawing.Size(72, 23);
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnGravar
             // 
+            this.btnGravar.BackColor = System.Drawing.Color.White;
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGravar.Location = new System.Drawing.Point(241, 231);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(72, 39);
-            this.btnGravar.TabIndex = 6;
+            this.btnGravar.Size = new System.Drawing.Size(72, 23);
+            this.btnGravar.TabIndex = 3;
             this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.UseVisualStyleBackColor = false;
             // 
             // txtDescricaoItem
             // 
-            this.txtDescricaoItem.Location = new System.Drawing.Point(79, 57);
+            this.txtDescricaoItem.Location = new System.Drawing.Point(79, 44);
             this.txtDescricaoItem.Name = "txtDescricaoItem";
             this.txtDescricaoItem.Size = new System.Drawing.Size(231, 23);
-            this.txtDescricaoItem.TabIndex = 8;
+            this.txtDescricaoItem.TabIndex = 0;
+            this.txtDescricaoItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 60);
+            this.label1.Location = new System.Drawing.Point(12, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 9;
@@ -78,19 +82,20 @@
             // 
             this.listItensTarefa.FormattingEnabled = true;
             this.listItensTarefa.ItemHeight = 15;
-            this.listItensTarefa.Location = new System.Drawing.Point(12, 101);
+            this.listItensTarefa.Location = new System.Drawing.Point(12, 71);
             this.listItensTarefa.Name = "listItensTarefa";
-            this.listItensTarefa.Size = new System.Drawing.Size(379, 124);
-            this.listItensTarefa.TabIndex = 10;
+            this.listItensTarefa.Size = new System.Drawing.Size(379, 154);
+            this.listItensTarefa.TabIndex = 2;
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(316, 57);
+            this.btnAdicionar.BackColor = System.Drawing.Color.White;
+            this.btnAdicionar.Location = new System.Drawing.Point(316, 44);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
-            this.btnAdicionar.TabIndex = 11;
+            this.btnAdicionar.TabIndex = 1;
             this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // label2
@@ -106,7 +111,7 @@
             // 
             this.labelTituloTarefa.AutoSize = true;
             this.labelTituloTarefa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelTituloTarefa.Location = new System.Drawing.Point(59, 19);
+            this.labelTituloTarefa.Location = new System.Drawing.Point(79, 19);
             this.labelTituloTarefa.Name = "labelTituloTarefa";
             this.labelTituloTarefa.Size = new System.Drawing.Size(85, 15);
             this.labelTituloTarefa.TabIndex = 13;
@@ -116,7 +121,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 277);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(403, 263);
             this.Controls.Add(this.labelTituloTarefa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAdicionar);
@@ -126,10 +132,10 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CadastroItensTarefa";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Itens da Tarefa";

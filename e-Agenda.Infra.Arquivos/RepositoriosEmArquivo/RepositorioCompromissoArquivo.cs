@@ -35,6 +35,7 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
             return "REGISTRO_VALIDO";
         }
+        
         public override string Excluir(Predicate<Compromisso> condicao)
         {
             List<Compromisso> compromissos = registros.Cast<Compromisso>().ToList();
@@ -52,6 +53,7 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             }
             return "EXCLUSAO_NAOREALIZADA";
         }
+        
         public override string Editar(Predicate<Compromisso> condicao, Compromisso novaEntidade)
         {
 
@@ -120,7 +122,5 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return "REGISTRO_VALIDO";
 
         }
-
-
     }
 }

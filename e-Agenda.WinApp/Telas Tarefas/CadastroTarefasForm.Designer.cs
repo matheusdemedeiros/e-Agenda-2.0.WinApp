@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroTarefasForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -65,34 +66,38 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(61, 23);
             this.txtId.TabIndex = 2;
+            this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTitulo
             // 
             this.txtTitulo.Location = new System.Drawing.Point(72, 46);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(352, 23);
-            this.txtTitulo.TabIndex = 3;
+            this.txtTitulo.TabIndex = 1;
+            this.txtTitulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnGravar
             // 
+            this.btnGravar.BackColor = System.Drawing.Color.White;
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(271, 160);
+            this.btnGravar.Location = new System.Drawing.Point(268, 78);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(72, 39);
-            this.btnGravar.TabIndex = 4;
+            this.btnGravar.Size = new System.Drawing.Size(75, 23);
+            this.btnGravar.TabIndex = 3;
             this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(352, 160);
+            this.btnCancelar.Location = new System.Drawing.Point(349, 78);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(72, 39);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -109,16 +114,17 @@
             "Baixa",
             "Normal",
             "Alta"});
+            this.comboBoxPrioridade.BackColor = System.Drawing.Color.White;
             this.comboBoxPrioridade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrioridade.FormattingEnabled = true;
             this.comboBoxPrioridade.Items.AddRange(new object[] {
             "Baixa",
             "Normal",
             "Alta"});
-            this.comboBoxPrioridade.Location = new System.Drawing.Point(72, 74);
+            this.comboBoxPrioridade.Location = new System.Drawing.Point(72, 75);
             this.comboBoxPrioridade.Name = "comboBoxPrioridade";
             this.comboBoxPrioridade.Size = new System.Drawing.Size(156, 23);
-            this.comboBoxPrioridade.TabIndex = 7;
+            this.comboBoxPrioridade.TabIndex = 2;
             // 
             // txtDataCriacao
             // 
@@ -126,7 +132,8 @@
             this.txtDataCriacao.Location = new System.Drawing.Point(257, 17);
             this.txtDataCriacao.Name = "txtDataCriacao";
             this.txtDataCriacao.Size = new System.Drawing.Size(167, 23);
-            this.txtDataCriacao.TabIndex = 8;
+            this.txtDataCriacao.TabIndex = 0;
+            this.txtDataCriacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -141,7 +148,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 211);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(436, 111);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDataCriacao);
             this.Controls.Add(this.comboBoxPrioridade);
@@ -153,10 +161,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CadastroTarefasForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Tarefas";

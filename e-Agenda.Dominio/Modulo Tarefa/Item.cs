@@ -1,7 +1,4 @@
-﻿using e_Agenda.Dominio.Compartilhado;
-using System.Text;
-
-namespace e_Agenda.Dominio.Modulo_Tarefa
+﻿namespace e_Agenda.Dominio.Modulo_Tarefa
 {
     public class Item
     {
@@ -45,7 +42,7 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
 
         public override string ToString()
         {
-            return "Descrição: " + Descricao;
+            return Descricao;
         }
     }
 }

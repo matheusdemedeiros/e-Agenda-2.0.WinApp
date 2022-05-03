@@ -1,5 +1,4 @@
-﻿using e_Agenda.Dominio.Compartilhado;
-using e_Agenda.Dominio.Modulo_Tarefa;
+﻿using e_Agenda.Dominio.Modulo_Tarefa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,23 +62,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             return "REGISTRO_VALIDO";
         }
 
-        private string ValidaTarefasComNomesIguais(Tarefa tarefa)
-        {
-            List<Tarefa> tarefas = registros.Cast<Tarefa>().ToList();
-
-            string sb = "REGISTRO_VALIDO";
-
-            foreach (Tarefa t in tarefas)
-            {
-                if (t.Titulo.ToUpper() == tarefa.Titulo.ToUpper())
-                {
-                    sb = "Já existe uma tarefa com este título!\n";
-                    break;
-                }
-            }
-            return sb.ToString();
-        }
-
         public override string Excluir(Predicate<Tarefa> condicao)
         {
             List<Tarefa> tarefas = registros.Cast<Tarefa>().ToList();
@@ -102,18 +84,22 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
             }
             return "EXCLUSAO_NAOREALIZADA";
         }
+        
+        private string ValidaTarefasComNomesIguais(Tarefa tarefa)
+        {
+            List<Tarefa> tarefas = registros.Cast<Tarefa>().ToList();
 
-        //public List<Tarefa> SelecionarTarefasConcluidas()
-        //{
-        //    return tarefas.Where(x => x.CalcularPercentualConcluido() == 100).ToList();
-        //}
+            string sb = "REGISTRO_VALIDO";
 
-        //public List<Tarefa> SelecionarTarefasPendentes()
-        //{
-        //    return tarefas.Where(x => x.CalcularPercentualConcluido() < 100).ToList();
-        //}
-
-
-
+            foreach (Tarefa t in tarefas)
+            {
+                if (t.Titulo.ToUpper() == tarefa.Titulo.ToUpper())
+                {
+                    sb = "Já existe uma tarefa com este título!\n";
+                    break;
+                }
+            }
+            return sb.ToString();
+        }
     }
 }

@@ -7,21 +7,22 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
 {
     public class Compromisso : EntidadeBase
     {
-
-        #region Propriedades
-
         public bool Passou => DataInicio < DateTime.Now && HoraInicio < DateTime.Now ? true : false;
+
         public string Assunto { get; set; }
+
         public string Local { get; set; }
+
         public DateTime DataInicio { get; set; }
+
         public DateTime HoraInicio { get; set; }
+
         public DateTime HoraTermino { get; set; }
+
         public DateTime DataInicialCompleta { get => MontarDataCompleta(DataInicio, HoraInicio);  }
+
         public Contato Contato { get; set; }
 
-        #endregion
-
-        #region Construtores
         public Compromisso()
         {
 
@@ -38,35 +39,6 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
             HoraTermino = horaTermino;
             Contato = contato;
         }
-
-        #endregion
-
-        #region Método públicos
-
-        public override string ToString()
-        {
-            string retorno =
-                "Assunto: " + Assunto +
-                "\tLocal: " + Local +
-                "\tData: " + DataInicio.ToShortDateString() +
-                "\tHorário de início: " + HoraInicio.ToShortTimeString() +
-                "\tHorário de término: " + HoraTermino.ToShortTimeString() +
-                "\tContato: " + Contato.Nome + "\n";
-
-            return retorno;
-        }
-
-        private DateTime MontarDataCompleta(DateTime data, DateTime hora)
-        {
-            int dia, mes, ano, minutos, horas;
-            dia = data.Day;
-            mes = data.Month;
-            ano = data.Year;
-            horas = hora.Hour;
-            minutos = hora.Minute;
-            return new DateTime(ano, mes, dia, horas, minutos, 0);
-        }
-
 
         public override string Validar()
         {
@@ -100,6 +72,30 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
             return sb.ToString();
         }
 
+        public override string ToString()
+        {
+            string retorno =
+                "Assunto: " + Assunto +
+                "\tLocal: " + Local +
+                "\tData: " + DataInicio.ToShortDateString() +
+                "\tHorário de início: " + HoraInicio.ToShortTimeString() +
+                "\tHorário de término: " + HoraTermino.ToShortTimeString() +
+                "\tContato: " + Contato.Nome + "\n";
+
+            return retorno;
+        }
+
+        private DateTime MontarDataCompleta(DateTime data, DateTime hora)
+        {
+            int dia, mes, ano, minutos, horas;
+            dia = data.Day;
+            mes = data.Month;
+            ano = data.Year;
+            horas = hora.Hour;
+            minutos = hora.Minute;
+            return new DateTime(ano, mes, dia, horas, minutos, 0);
+        }
+
         private bool VerificaHoraInicioMenorHoraTermino()
         {
             if (HoraInicio < HoraTermino)
@@ -107,9 +103,5 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
             else
                 return false;
         }
-
-
-
-        #endregion
     }
 }

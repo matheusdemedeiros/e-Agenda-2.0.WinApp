@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroCompromissosForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -104,7 +105,7 @@
             this.txtAssunto.Location = new System.Drawing.Point(87, 12);
             this.txtAssunto.Name = "txtAssunto";
             this.txtAssunto.Size = new System.Drawing.Size(162, 23);
-            this.txtAssunto.TabIndex = 6;
+            this.txtAssunto.TabIndex = 0;
             this.txtAssunto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtLocal
@@ -112,7 +113,7 @@
             this.txtLocal.Location = new System.Drawing.Point(299, 12);
             this.txtLocal.Name = "txtLocal";
             this.txtLocal.Size = new System.Drawing.Size(162, 23);
-            this.txtLocal.TabIndex = 7;
+            this.txtLocal.TabIndex = 1;
             this.txtLocal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dateTimePickerDataCompromisso
@@ -122,39 +123,42 @@
             this.dateTimePickerDataCompromisso.Name = "dateTimePickerDataCompromisso";
             this.dateTimePickerDataCompromisso.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerDataCompromisso.Size = new System.Drawing.Size(374, 23);
-            this.dateTimePickerDataCompromisso.TabIndex = 8;
+            this.dateTimePickerDataCompromisso.TabIndex = 2;
             this.dateTimePickerDataCompromisso.Value = new System.DateTime(2022, 5, 2, 20, 22, 9, 0);
             // 
             // btnGravar
             // 
+            this.btnGravar.BackColor = System.Drawing.Color.White;
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGravar.Location = new System.Drawing.Point(28, 137);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 9;
+            this.btnGravar.TabIndex = 6;
             this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnLimpar
             // 
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
             this.btnLimpar.Location = new System.Drawing.Point(109, 137);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 10;
+            this.btnLimpar.TabIndex = 7;
             this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(190, 137);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // comboBoxContato
             // 
@@ -163,7 +167,7 @@
             this.comboBoxContato.Location = new System.Drawing.Point(271, 100);
             this.comboBoxContato.Name = "comboBoxContato";
             this.comboBoxContato.Size = new System.Drawing.Size(190, 23);
-            this.comboBoxContato.TabIndex = 14;
+            this.comboBoxContato.TabIndex = 5;
             // 
             // dateTimePickerHoraInicio
             // 
@@ -173,7 +177,7 @@
             this.dateTimePickerHoraInicio.Name = "dateTimePickerHoraInicio";
             this.dateTimePickerHoraInicio.ShowUpDown = true;
             this.dateTimePickerHoraInicio.Size = new System.Drawing.Size(85, 23);
-            this.dateTimePickerHoraInicio.TabIndex = 15;
+            this.dateTimePickerHoraInicio.TabIndex = 3;
             // 
             // dateTimePickerHoraTermino
             // 
@@ -183,12 +187,13 @@
             this.dateTimePickerHoraTermino.Name = "dateTimePickerHoraTermino";
             this.dateTimePickerHoraTermino.ShowUpDown = true;
             this.dateTimePickerHoraTermino.Size = new System.Drawing.Size(85, 23);
-            this.dateTimePickerHoraTermino.TabIndex = 16;
+            this.dateTimePickerHoraTermino.TabIndex = 4;
             // 
             // CadastroCompromissosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(493, 183);
             this.Controls.Add(this.dateTimePickerHoraTermino);
             this.Controls.Add(this.dateTimePickerHoraInicio);
@@ -206,10 +211,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CadastroCompromissosForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Compromissos";

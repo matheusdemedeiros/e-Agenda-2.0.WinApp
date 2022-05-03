@@ -13,7 +13,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
             InitializeComponent();
         }
 
-
         public Contato Contato
         {
             get
@@ -31,15 +30,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
             }
         }
 
-        private void LimparCampos()
-        {
-            txtNome.Text = "";
-            txtEmail.Text = "";
-            txtTelefone.Text = "";
-            txtEmpresa.Text = "";
-            txtCargo.Text = "";
-        }
-
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
             LimparCampos();
@@ -54,5 +44,13 @@ namespace e_Agenda.WinApp.Telas_Contatos
             contato.Cargo = txtCargo.Text;
         }
 
+        private void LimparCampos()
+        {
+            txtNome.Text = "";
+            txtEmail.Text = "";
+            txtTelefone.Text = "";
+            txtEmpresa.Text = "";
+            txtCargo.Text = "";
+        }
     }
 }

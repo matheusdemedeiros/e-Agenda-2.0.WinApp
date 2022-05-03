@@ -6,12 +6,6 @@ using e_Agenda.Infra.Arquivos.RepositoriosEmArquivo;
 using e_Agenda.Infra.Arquivos.SerializacaoJson;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace e_Agenda.WinApp.Telas_Compromissos
@@ -45,6 +39,31 @@ namespace e_Agenda.WinApp.Telas_Compromissos
             }
         }
 
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            dateTimePickerDataCompromisso.Value = DateTime.Now;
+
+            comboBoxContato.SelectedIndex = -1;
+
+            txtAssunto.Clear();
+
+            txtLocal.Clear();
+
+            PopularCamposDeHorario();
+
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            Compromisso.Assunto = txtAssunto.Text;
+            Compromisso.Local = txtLocal.Text;
+            Compromisso.DataInicio = dateTimePickerDataCompromisso.Value;
+            Compromisso.HoraInicio = dateTimePickerHoraInicio.Value;
+            Compromisso.HoraTermino = dateTimePickerHoraTermino.Value;
+            Compromisso.Contato = (Contato)comboBoxContato.SelectedItem;
+
+        }
+
         private void PopularNomesContatosCombobox()
         {
             serializador = new SerializadorEntidadeJson<Contato>();
@@ -75,31 +94,6 @@ namespace e_Agenda.WinApp.Telas_Compromissos
             PopularNomesContatosCombobox();
 
             PopularCamposDeHorario();
-        }
-
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            dateTimePickerDataCompromisso.Value = DateTime.Now;
-
-            comboBoxContato.SelectedIndex = -1;
-
-            txtAssunto.Clear();
-
-            txtLocal.Clear();
-
-            PopularCamposDeHorario();
-
-        }
-
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            Compromisso.Assunto = txtAssunto.Text;
-            Compromisso.Local = txtLocal.Text;
-            Compromisso.DataInicio = dateTimePickerDataCompromisso.Value;
-            Compromisso.HoraInicio = dateTimePickerHoraInicio.Value;
-            Compromisso.HoraTermino = dateTimePickerHoraTermino.Value;
-            Compromisso.Contato = (Contato)comboBoxContato.SelectedItem;
-
         }
     }
 }

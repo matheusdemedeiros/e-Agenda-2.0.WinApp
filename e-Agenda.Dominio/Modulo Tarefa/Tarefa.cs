@@ -9,16 +9,10 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
     [Serializable]
     public class Tarefa : EntidadeBase, IComparable<Tarefa>
     {
-        #region Atributos
-
         private int prioridade;
         private Status statusTarefa;
         private List<Item> itens = new List<Item>();
         private DateTime? dataConclusao;
-
-        #endregion
-
-        #region Propriedades
 
         public string Titulo { get; set; }
         public DateTime DataCriacao { get; set; }
@@ -70,8 +64,6 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
             }
             set { statusTarefa = value; }
         }
-
-        #endregion
 
         public Tarefa()
         {

@@ -110,17 +110,6 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             }
         }
 
-        private Tarefa? ObtemTarefaSelecionada()
-        {
-            Tarefa? tarefaSelecionada = null;
-            
-            if (tabControlTarefas.SelectedTab == tabPageTarefasPendentes)
-                tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
-            else if (tabControlTarefas.SelectedTab == tabPageTarefasConcluidas)
-                tarefaSelecionada = (Tarefa)listTarefasConcluidas.SelectedItem;
-            return tarefaSelecionada;
-        }
-
         private void btnVisualizacaoComum_Click(object sender, EventArgs e)
         {
             CarregarTarefas();
@@ -183,6 +172,17 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             CarregarTarefasOrdenadasPorPrioridade();
         }
 
+        private Tarefa? ObtemTarefaSelecionada()
+        {
+            Tarefa? tarefaSelecionada = null;
+            
+            if (tabControlTarefas.SelectedTab == tabPageTarefasPendentes)
+                tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            else if (tabControlTarefas.SelectedTab == tabPageTarefasConcluidas)
+                tarefaSelecionada = (Tarefa)listTarefasConcluidas.SelectedItem;
+            return tarefaSelecionada;
+        }
+        
         private void CarregarTarefas()
         {
             SerializadorEntidadeJson<Tarefa> serializador = new SerializadorEntidadeJson<Tarefa>();
@@ -234,6 +234,5 @@ namespace e_Agenda.WinApp.Telas_Tarefas
             }
 
         }
-
     }
 }

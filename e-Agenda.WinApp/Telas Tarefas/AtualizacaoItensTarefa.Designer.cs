@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtualizacaoItensTarefa));
             this.listItensTarefa = new System.Windows.Forms.CheckedListBox();
             this.labelTituloTarefa = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,39 +66,42 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(275, 246);
+            this.btnCancelar.Location = new System.Drawing.Point(275, 243);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(72, 39);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Size = new System.Drawing.Size(72, 23);
+            this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnGravar
             // 
+            this.btnGravar.BackColor = System.Drawing.Color.White;
             this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnGravar.Location = new System.Drawing.Point(194, 246);
+            this.btnGravar.Location = new System.Drawing.Point(197, 243);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(72, 39);
-            this.btnGravar.TabIndex = 16;
+            this.btnGravar.Size = new System.Drawing.Size(72, 23);
+            this.btnGravar.TabIndex = 1;
             this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.UseVisualStyleBackColor = false;
             // 
             // AtualizacaoItensTarefa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 297);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(366, 278);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.labelTituloTarefa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listItensTarefa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AtualizacaoItensTarefa";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atualização dos Itens da Tarefa";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroContatosForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -93,28 +94,32 @@
             this.txtNome.Location = new System.Drawing.Point(83, 27);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(282, 23);
-            this.txtNome.TabIndex = 5;
+            this.txtNome.TabIndex = 0;
+            this.txtNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(83, 56);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(282, 23);
-            this.txtEmail.TabIndex = 6;
+            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEmpresa
             // 
             this.txtEmpresa.Location = new System.Drawing.Point(83, 114);
             this.txtEmpresa.Name = "txtEmpresa";
             this.txtEmpresa.Size = new System.Drawing.Size(282, 23);
-            this.txtEmpresa.TabIndex = 8;
+            this.txtEmpresa.TabIndex = 3;
+            this.txtEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCargo
             // 
             this.txtCargo.Location = new System.Drawing.Point(83, 143);
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(282, 23);
-            this.txtCargo.TabIndex = 9;
+            this.txtCargo.TabIndex = 4;
+            this.txtCargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnGravar
             // 
@@ -123,7 +128,7 @@
             this.btnGravar.Location = new System.Drawing.Point(128, 186);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 10;
+            this.btnGravar.TabIndex = 5;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = false;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -134,7 +139,7 @@
             this.btnLimparCampos.Location = new System.Drawing.Point(209, 186);
             this.btnLimparCampos.Name = "btnLimparCampos";
             this.btnLimparCampos.Size = new System.Drawing.Size(75, 23);
-            this.btnLimparCampos.TabIndex = 12;
+            this.btnLimparCampos.TabIndex = 6;
             this.btnLimparCampos.Text = "Limpar";
             this.btnLimparCampos.UseVisualStyleBackColor = false;
             this.btnLimparCampos.Click += new System.EventHandler(this.btnLimparCampos_Click);
@@ -146,7 +151,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(290, 186);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -156,13 +161,14 @@
             this.txtTelefone.Mask = "(00) 0 0000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(282, 23);
-            this.txtTelefone.TabIndex = 13;
+            this.txtTelefone.TabIndex = 2;
             // 
             // CadastroContatosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 224);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(392, 224);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnLimparCampos);
@@ -176,9 +182,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CadastroContatosForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Contatos";

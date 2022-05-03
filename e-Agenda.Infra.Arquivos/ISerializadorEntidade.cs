@@ -8,6 +8,5 @@ namespace e_Agenda.Infra.Arquivos
         List<T> CarregarEntidadesDoArquivo();
 
         void GravarEntidadesEmArquivo(List<T> entidades);
-        
     }
 }

@@ -27,6 +27,7 @@ namespace e_Agenda.WinApp.Telas_Contatos
         private void btnInserir_Click(object sender, EventArgs e)
         {
             CadastroContatosForm tela = new CadastroContatosForm();
+            
             tela.Contato = new Contato();
 
             DialogResult resultado = tela.ShowDialog();
@@ -42,19 +43,6 @@ namespace e_Agenda.WinApp.Telas_Contatos
                     MessageBox.Show("Contato inserido com sucesso!", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CarregarContatos();
                 }
-            }
-
-        }
-
-        private void CarregarContatos()
-        {
-            List<Contato> contatos = repositorioContato.SelecionarTodos();
-
-            listaContatos.Items.Clear();
-
-            foreach (Contato c in contatos)
-            {
-                listaContatos.Items.Add(c);
             }
 
         }
@@ -122,6 +110,11 @@ namespace e_Agenda.WinApp.Telas_Contatos
 
         }
 
+        private void btnVisualizacaoComum_Click(object sender, EventArgs e)
+        {
+            CarregarContatos();
+        }
+        
         private void btnVisualizarPorCargo_Click(object sender, EventArgs e)
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();
@@ -156,10 +149,17 @@ namespace e_Agenda.WinApp.Telas_Contatos
             return cargosCadastrados.Distinct().ToList();
         }
 
-        private void btnVisualizacaoComum_Click(object sender, EventArgs e)
+        private void CarregarContatos()
         {
-            CarregarContatos();
-        }
+            List<Contato> contatos = repositorioContato.SelecionarTodos();
 
+            listaContatos.Items.Clear();
+
+            foreach (Contato c in contatos)
+            {
+                listaContatos.Items.Add(c);
+            }
+
+        }
     }
 }
