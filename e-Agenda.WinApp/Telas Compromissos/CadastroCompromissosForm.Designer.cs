@@ -162,6 +162,7 @@
             // 
             // comboBoxContato
             // 
+            this.comboBoxContato.DisplayMember = "Nome";
             this.comboBoxContato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxContato.FormattingEnabled = true;
             this.comboBoxContato.Location = new System.Drawing.Point(271, 100);

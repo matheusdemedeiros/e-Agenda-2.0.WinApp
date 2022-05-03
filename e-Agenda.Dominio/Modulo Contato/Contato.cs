@@ -1,4 +1,5 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
+using System;
 using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Contato
@@ -8,22 +9,22 @@ namespace e_Agenda.Dominio.Modulo_Contato
         private int quantidadeDeCompromissosRelacionados;
 
         public string Nome { get; set; }
-        
+
         public string Email { get; set; }
-        
+
         public string Telefone { get; set; }
-        
+
         public string Empresa { get; set; }
-        
+
         public string Cargo { get; set; }
-        
+
         public int QuantidadeDeCompromissosRelacionados { get => quantidadeDeCompromissosRelacionados; set => quantidadeDeCompromissosRelacionados = value; }
 
         public Contato()
         {
 
         }
-        
+
         public Contato(string nome, string email, string telefone, string empresa, string cargo)
         {
             this.Nome = nome;
@@ -32,7 +33,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
             this.Empresa = empresa;
             this.Cargo = cargo;
         }
-        
+
         public Contato(string nome, string email, string telefone)
         {
             this.Nome = nome;
@@ -75,6 +76,24 @@ namespace e_Agenda.Dominio.Modulo_Contato
             return retorno;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Contato contato &&
+                   id == contato.id &&
+                   quantidadeDeCompromissosRelacionados == contato.quantidadeDeCompromissosRelacionados &&
+                   Nome == contato.Nome &&
+                   Email == contato.Email &&
+                   Telefone == contato.Telefone &&
+                   Empresa == contato.Empresa &&
+                   Cargo == contato.Cargo &&
+                   QuantidadeDeCompromissosRelacionados == contato.QuantidadeDeCompromissosRelacionados;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(id, quantidadeDeCompromissosRelacionados, Nome, Email, Telefone, Empresa, Cargo, QuantidadeDeCompromissosRelacionados);
+        }
+
         private bool ValidarTelefone()
         {
             bool telefoneEstaValido = false;
@@ -104,5 +123,6 @@ namespace e_Agenda.Dominio.Modulo_Contato
 
             return emailEstaValido;
         }
+
     }
 }
