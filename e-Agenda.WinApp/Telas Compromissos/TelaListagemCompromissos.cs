@@ -209,7 +209,10 @@ namespace e_Agenda.WinApp.Telas_Compromissos
                 if (validacao != "REGISTRO_VALIDO")
                     MessageBox.Show(validacao, "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
+                {
+                    MessageBox.Show("Compromisso inserido com sucesso!", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CarregarCompromissos();
+                }
             }
         }
     }

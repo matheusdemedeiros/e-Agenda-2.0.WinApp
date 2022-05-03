@@ -40,9 +40,9 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtHoraInicio = new System.Windows.Forms.MaskedTextBox();
-            this.txtHoraTermino = new System.Windows.Forms.MaskedTextBox();
             this.comboBoxContato = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerHoraInicio = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerHoraTermino = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -134,6 +134,7 @@
             this.btnGravar.TabIndex = 9;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnLimpar
             // 
@@ -143,6 +144,7 @@
             this.btnLimpar.TabIndex = 10;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnCancelar
             // 
@@ -154,26 +156,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // txtHoraInicio
-            // 
-            this.txtHoraInicio.Location = new System.Drawing.Point(142, 72);
-            this.txtHoraInicio.Mask = "00:00";
-            this.txtHoraInicio.Name = "txtHoraInicio";
-            this.txtHoraInicio.Size = new System.Drawing.Size(108, 23);
-            this.txtHoraInicio.TabIndex = 12;
-            this.txtHoraInicio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtHoraInicio.ValidatingType = typeof(System.DateTime);
-            // 
-            // txtHoraTermino
-            // 
-            this.txtHoraTermino.Location = new System.Drawing.Point(142, 100);
-            this.txtHoraTermino.Mask = "00:00";
-            this.txtHoraTermino.Name = "txtHoraTermino";
-            this.txtHoraTermino.Size = new System.Drawing.Size(108, 23);
-            this.txtHoraTermino.TabIndex = 13;
-            this.txtHoraTermino.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtHoraTermino.ValidatingType = typeof(System.DateTime);
-            // 
             // comboBoxContato
             // 
             this.comboBoxContato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -183,14 +165,34 @@
             this.comboBoxContato.Size = new System.Drawing.Size(190, 23);
             this.comboBoxContato.TabIndex = 14;
             // 
+            // dateTimePickerHoraInicio
+            // 
+            this.dateTimePickerHoraInicio.CustomFormat = "HH:mm";
+            this.dateTimePickerHoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerHoraInicio.Location = new System.Drawing.Point(142, 72);
+            this.dateTimePickerHoraInicio.Name = "dateTimePickerHoraInicio";
+            this.dateTimePickerHoraInicio.ShowUpDown = true;
+            this.dateTimePickerHoraInicio.Size = new System.Drawing.Size(85, 23);
+            this.dateTimePickerHoraInicio.TabIndex = 15;
+            // 
+            // dateTimePickerHoraTermino
+            // 
+            this.dateTimePickerHoraTermino.CustomFormat = "HH:mm";
+            this.dateTimePickerHoraTermino.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerHoraTermino.Location = new System.Drawing.Point(142, 102);
+            this.dateTimePickerHoraTermino.Name = "dateTimePickerHoraTermino";
+            this.dateTimePickerHoraTermino.ShowUpDown = true;
+            this.dateTimePickerHoraTermino.Size = new System.Drawing.Size(85, 23);
+            this.dateTimePickerHoraTermino.TabIndex = 16;
+            // 
             // CadastroCompromissosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 183);
+            this.Controls.Add(this.dateTimePickerHoraTermino);
+            this.Controls.Add(this.dateTimePickerHoraInicio);
             this.Controls.Add(this.comboBoxContato);
-            this.Controls.Add(this.txtHoraTermino);
-            this.Controls.Add(this.txtHoraInicio);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnGravar);
@@ -230,8 +232,8 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.MaskedTextBox txtHoraInicio;
-        private System.Windows.Forms.MaskedTextBox txtHoraTermino;
         private System.Windows.Forms.ComboBox comboBoxContato;
+        private System.Windows.Forms.DateTimePicker dateTimePickerHoraInicio;
+        private System.Windows.Forms.DateTimePicker dateTimePickerHoraTermino;
     }
 }

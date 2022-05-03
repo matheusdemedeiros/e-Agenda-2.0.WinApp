@@ -42,7 +42,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
             StringBuilder sb = new StringBuilder();
 
             if (string.IsNullOrEmpty(Nome))
-            sb.AppendLine("É necessário inserir um nome válido para os contatos!");
+                sb.AppendLine("É necessário inserir um nome válido para os contatos!");
 
             if (!ValidarEmail())
                 sb.AppendLine("É necessário inserir um email válido para os contatos (mínimo de 6 caracteres e contendo @ e . )!");
@@ -62,15 +62,18 @@ namespace e_Agenda.Dominio.Modulo_Contato
             return sb.ToString();
         }
 
+
+
         public override string ToString()
         {
-            string retorno =
-          "ID: " + id +
-          "\tNome: " + Nome +
-          "\tEmail: " + Email +
-          "\tTelefone: " + Telefone +
-          "\tEmpresa: " + Empresa +
-          "\tCargo: " + Cargo;
+            string
+                retorno =
+              "ID: " + id +
+              "\tNome: " + Nome +
+              "\tEmail: " + Email +
+              "\tTelefone: " + Telefone +
+              "\tEmpresa: " + Empresa +
+              "\tCargo: " + Cargo;
 
             return retorno;
         }
@@ -78,16 +81,6 @@ namespace e_Agenda.Dominio.Modulo_Contato
         #endregion
 
         #region Métodos privados
-
-        //private bool ValidarTelefone()
-        //{
-        //    if (!string.IsNullOrEmpty(Telefone))
-        //        if (Telefone.Length >= 10)
-        //            if (long.TryParse(Telefone, out long res))
-        //                return true;
-        //    return false;
-        //}
-
 
         private bool ValidarTelefone()
         {
@@ -99,7 +92,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
                                                 .Replace(")", string.Empty)
                                                 .Replace("(", string.Empty);
 
-            if (telefoneProcessado.Length  < 10)
+            if (telefoneProcessado.Length < 10)
                 return telefoneEstaValido;
 
             telefoneEstaValido = System.Text.RegularExpressions.Regex.IsMatch(telefoneProcessado, @"^[0-9]*$");
