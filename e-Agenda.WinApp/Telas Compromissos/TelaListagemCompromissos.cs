@@ -35,6 +35,8 @@ namespace e_Agenda.WinApp.Telas_Compromissos
             InitializeComponent();
 
             CarregarCompromissos();
+
+            Inicializar();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -89,13 +91,13 @@ namespace e_Agenda.WinApp.Telas_Compromissos
                 else
                 {
                     MessageBox.Show("Compromisso excluído com sucesso", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+
                     Contato contatoDecrementar = repositorioContatos.SelecionarRegistro(x => x.id == contatoInicial.id);
 
                     contatoDecrementar.QuantidadeDeCompromissosRelacionados--;
 
                     repositorioContatos.Editar(x => x.id == contatoDecrementar.id, contatoDecrementar);
-                    
+
                     CarregarCompromissos();
                 }
             }
@@ -131,15 +133,15 @@ namespace e_Agenda.WinApp.Telas_Compromissos
                     if (contatoInicial.id != tela.Compromisso.Contato.id)
                     {
                         Contato contatoDecrementar = repositorioContatos.SelecionarRegistro(x => x.id == contatoInicial.id);
-                        
+
                         contatoDecrementar.QuantidadeDeCompromissosRelacionados--;
-                        
+
                         repositorioContatos.Editar(x => x.id == contatoDecrementar.id, contatoDecrementar);
-                        
+
                         Contato contatoIncrementar = repositorioContatos.SelecionarRegistro(x => x.id == tela.Compromisso.Contato.id);
-                        
+
                         contatoIncrementar.QuantidadeDeCompromissosRelacionados++;
-                        
+
                         repositorioContatos.Editar(x => x.id == contatoIncrementar.id, contatoIncrementar);
                     }
 
@@ -150,66 +152,52 @@ namespace e_Agenda.WinApp.Telas_Compromissos
             }
         }
 
-        private void btnVisualizacaoComum_Click(object sender, EventArgs e)
+        private void btnFiltrarPeriodo_Click(object sender, EventArgs e)
         {
+            if (dateTimePickerDataInicioPeriodo.Value > dateTimePickerDataFimPeriodo.Value)
+            {
+                MessageBox.Show("A data inicial deve ser menor que a data final!",
+                "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (dateTimePickerHoraInicioPeriodo.Value > dateTimePickerHoraFimPeriodo.Value)
+            {
+                MessageBox.Show("O horário inicial deve ser menor que o horário final!",
+                "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DateTime inicioFiltro = IniciarDateTimeFiltro(dateTimePickerDataInicioPeriodo, dateTimePickerHoraInicioPeriodo);
+
+            DateTime fimFiltro = IniciarDateTimeFiltro(dateTimePickerDataFimPeriodo, dateTimePickerHoraFimPeriodo);
+
+            CarregarCompromissos(FiltrarCompromissos(inicioFiltro, fimFiltro));
+        }
+
+        private void btnLimparFiltro_Click(object sender, EventArgs e)
+        {
+            Inicializar();
+
             CarregarCompromissos();
         }
 
-        private void btnCadastrarItens_Click(object sender, EventArgs e)
+        private void tabControlCompromissos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Compromisso compromissoSelecionado = (Compromisso)listCompromissosPendentes.SelectedItem;
+            if (tabControlCompromissos.SelectedIndex == 0)
+            {
+                btnFiltrarPeriodo.Enabled = true;
+                btnLimparFiltro.Enabled = true;
+                btnCompromissosSemana.Enabled = true;
+                btnCompromissosDia.Enabled = true;
+            }
+            else if (tabControlCompromissos.SelectedIndex == 1)
+            {
+                btnFiltrarPeriodo.Enabled = false;
+                btnLimparFiltro.Enabled = false;
+                btnCompromissosSemana.Enabled = false;
+                btnCompromissosDia.Enabled = false;
 
-            //if (compromissoSelecionado == null)
-            //{
-            //    MessageBox.Show("Selecione uma tarefa primeiro",
-            //    "Edição de Compromissos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
-
-            //CadastroItensCompromisso tela = new CadastroItensCompromisso(compromissoSelecionado);
-
-            //if (tela.ShowDialog() == DialogResult.OK)
-            //{
-            //    List<Item> itens = tela.ItensAdicionados;
-
-            //    var repositorio = (IRepositorioCompromissoEspecifico)repositorioCompromisso;
-
-            //    repositorio.AdicionarItens(compromissoSelecionado, itens);
-
-            //    CarregarCompromissos();
-            //}
-        }
-
-        private void btnAtualizarItens_Click(object sender, EventArgs e)
-        {
-            //Compromisso? compromissoSelecionado = ObtemCompromissoSelecionado();
-
-            //if (compromissoSelecionado == null)
-            //{
-            //    MessageBox.Show("Selecione uma tarefa primeiro",
-            //    "Edição de Compromissos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
-
-            //AtualizacaoItensCompromisso tela = new AtualizacaoItensCompromisso(compromissoSelecionado);
-
-            //if (tela.ShowDialog() == DialogResult.OK)
-            //{
-            //    List<Item> itensConcluidos = tela.ItensConcluidos;
-
-            //    List<Item> itensPendentes = tela.ItensPendentes;
-
-            //    IRepositorioCompromissoEspecifico repositorio = (IRepositorioCompromissoEspecifico)repositorioCompromisso;
-
-            //    repositorio.AtualizarItens(compromissoSelecionado, itensConcluidos, itensPendentes);
-
-            //    CarregarCompromissos();
-            //}
-        }
-
-        private void btnOrdenarPorPrioridade_Click(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private Compromisso? ObtemCompromissoSelecionado()
@@ -222,7 +210,7 @@ namespace e_Agenda.WinApp.Telas_Compromissos
                 compromissoSelecionado = (Compromisso)listCompromissosFuturos.SelectedItem;
             return compromissoSelecionado;
         }
-        
+
         private void CarregarCompromissos()
         {
             SerializadorEntidadeJson<Compromisso> serializador = new SerializadorEntidadeJson<Compromisso>();
@@ -233,22 +221,67 @@ namespace e_Agenda.WinApp.Telas_Compromissos
 
             listCompromissosPassados.Items.Clear();
 
-            foreach (Compromisso t in compromissosPassados)
+            foreach (Compromisso c in compromissosPassados)
             {
-                listCompromissosPassados.Items.Add(t);
+                listCompromissosPassados.Items.Add(c);
             }
 
             List<Compromisso> compromissosFuturos = repositorioCompromisso.Filtrar(x => !x.Passou);
 
             listCompromissosFuturos.Items.Clear();
 
-            foreach (Compromisso t in compromissosFuturos)
+            foreach (Compromisso c in compromissosFuturos)
             {
-                listCompromissosFuturos.Items.Add(t);
+                listCompromissosFuturos.Items.Add(c);
             }
 
         }
 
-     
+        private void CarregarCompromissos(List<Compromisso> compromissos)
+        {
+            listCompromissosFuturos.Items.Clear();
+
+            foreach (Compromisso c in compromissos)
+            {
+                listCompromissosFuturos.Items.Add(c);
+            }
+        }
+
+        private void Inicializar()
+        {
+            dateTimePickerDataInicioPeriodo.MinDate = DateTime.Today;
+            dateTimePickerDataFimPeriodo.MinDate = DateTime.Today;
+            dateTimePickerDataInicioPeriodo.Value = DateTime.Today;
+            dateTimePickerDataFimPeriodo.Value = DateTime.Today;
+            dateTimePickerHoraInicioPeriodo.Text = "12:00";
+            dateTimePickerHoraFimPeriodo.Text = "12:00";
+        }
+
+        private List<Compromisso> FiltrarCompromissos(DateTime inicioFiltro, DateTime fimFiltro)
+        {
+            //return repositorioCompromisso.SelecionarTodos().FindAll(x => x.DataInicialCompleta >= inicioFiltro && x.DataInicialCompleta <= fimFiltro);
+            return repositorioCompromisso.Filtrar(x => x.DataInicialCompleta >= inicioFiltro && x.DataInicialCompleta <= fimFiltro && x.Passou == false).ToList();
+        }
+
+        private DateTime IniciarDateTimeFiltro(DateTimePicker data, DateTimePicker hora)
+        {
+            int dia, mes, ano, minutos, horas;
+            dia = data.Value.Day;
+            mes = data.Value.Month;
+            ano = data.Value.Year;
+            horas = hora.Value.Hour;
+            minutos = hora.Value.Minute;
+            return new DateTime(ano, mes, dia, horas, minutos, 0);
+
+        }
+
+        private void btnCompromissosDia_Click(object sender, EventArgs e)
+        {
+            DateTime inicioFiltro = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
+
+            DateTime fimFiltro = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
+
+            CarregarCompromissos(FiltrarCompromissos(inicioFiltro, fimFiltro));
+        }
     }
 }

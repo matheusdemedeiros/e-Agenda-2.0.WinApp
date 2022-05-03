@@ -17,7 +17,10 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
         public DateTime DataInicio { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraTermino { get; set; }
+        public DateTime DataInicialCompleta { get => MontarDataCompleta(DataInicio, HoraInicio);  }
         public Contato Contato { get; set; }
+
+
 
         #endregion
 
@@ -56,13 +59,25 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
             return retorno;
         }
 
+        private DateTime MontarDataCompleta(DateTime data, DateTime hora)
+        {
+            int dia, mes, ano, minutos, horas;
+            dia = data.Day;
+            mes = data.Month;
+            ano = data.Year;
+            horas = hora.Hour;
+            minutos = hora.Minute;
+            return new DateTime(ano, mes, dia, horas, minutos, 0);
+        }
+
+
         public override string Validar()
         {
             StringBuilder sb = new StringBuilder();
             int cont = 0;
 
             if (string.IsNullOrEmpty(Assunto))
-                sb.AppendLine(++cont+ " - É necessário inserir um assunto válido para os compromissos!");
+                sb.AppendLine(++cont + " - É necessário inserir um assunto válido para os compromissos!");
 
             if (string.IsNullOrEmpty(Local))
                 sb.AppendLine(++cont + " - É necessário inserir um local válido para os compromissos!");
@@ -75,7 +90,7 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
 
             if (HoraTermino == new DateTime(1, 1, 1))
                 sb.AppendLine(++cont + " - É necessário inserir um horário de término válido para os compromissos!");
-            
+
             if (VerificaHoraInicioMenorHoraTermino() == false)
                 sb.AppendLine(++cont + " - O horário de início deve ser menor do que o horário de término!");
 
