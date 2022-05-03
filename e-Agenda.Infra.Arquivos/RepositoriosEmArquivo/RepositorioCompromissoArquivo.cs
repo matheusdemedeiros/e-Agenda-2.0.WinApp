@@ -1,4 +1,5 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
+using e_Agenda.Dominio.Modulo_Compromisso;
 using e_Agenda.Dominio.Modulo_Compromissso;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 
 namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 {
-    public class RepositorioCompromissoArquivo : RepositorioBaseArquivo<Compromisso>, IRepositorio<Compromisso>
+    public class RepositorioCompromissoArquivo : RepositorioBaseArquivo<Compromisso>, IRepositorio<Compromisso>, IRepositorioCompromissoEspecifico
     {
         public RepositorioCompromissoArquivo(ISerializadorEntidade<Compromisso> serializador) : base(serializador)
         {
@@ -62,12 +63,6 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
                 {
                     novaEntidade.id = entidade.id;
 
-                    //if(novaEntidade.Contato.id != entidade.Contato.id)
-                    //{
-                    //    entidade.Contato.QuantidadeDeCompromissosRelacionados -= 1;
-                        
-                    //    novaEntidade.Contato.QuantidadeDeCompromissosRelacionados += 1;
-                    //}
                     int posicaoParaEditar = registros.IndexOf(entidade);
 
                     registros[posicaoParaEditar] = novaEntidade;
@@ -80,5 +75,22 @@ namespace e_Agenda.Infra.Arquivos.RepositoriosEmArquivo
 
             return "REGISTRO_INVALIDO";
         }
+
+        public List<Compromisso> SelecionarCompromissosSemanais()
+        {
+            int hoje = (int)DateTime.Today.DayOfWeek;
+
+            int diferencaParaSabado = 6 - hoje;
+
+            DateTime dataFinal = DateTime.Today.AddDays(diferencaParaSabado);
+
+            dataFinal.AddHours(23);
+
+            dataFinal.AddMinutes(59);
+
+            return registros.FindAll(x => x.DataInicio >= DateTime.Today
+            && x.DataInicio <= dataFinal && x.Passou == false);
+        }
+
     }
 }

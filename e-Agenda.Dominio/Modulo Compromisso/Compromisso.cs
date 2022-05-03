@@ -1,7 +1,6 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using e_Agenda.Dominio.Modulo_Contato;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Compromissso
@@ -19,8 +18,6 @@ namespace e_Agenda.Dominio.Modulo_Compromissso
         public DateTime HoraTermino { get; set; }
         public DateTime DataInicialCompleta { get => MontarDataCompleta(DataInicio, HoraInicio);  }
         public Contato Contato { get; set; }
-
-
 
         #endregion
 

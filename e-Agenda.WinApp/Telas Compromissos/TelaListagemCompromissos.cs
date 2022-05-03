@@ -1,4 +1,5 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
+using e_Agenda.Dominio.Modulo_Compromisso;
 using e_Agenda.Dominio.Modulo_Compromissso;
 using e_Agenda.Dominio.Modulo_Contato;
 using e_Agenda.Infra.Arquivos;
@@ -181,6 +182,21 @@ namespace e_Agenda.WinApp.Telas_Compromissos
             CarregarCompromissos();
         }
 
+        private void btnCompromissosDia_Click(object sender, EventArgs e)
+        {
+            DateTime inicioFiltro = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
+
+            DateTime fimFiltro = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
+
+            CarregarCompromissos(FiltrarCompromissos(inicioFiltro, fimFiltro));
+        }
+
+        private void btnCompromissosSemana_Click(object sender, EventArgs e)
+        {
+            IRepositorioCompromissoEspecifico repositorio = (IRepositorioCompromissoEspecifico)repositorioCompromisso;
+            CarregarCompromissos(repositorio.SelecionarCompromissosSemanais());
+        }
+
         private void tabControlCompromissos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlCompromissos.SelectedIndex == 0)
@@ -239,6 +255,13 @@ namespace e_Agenda.WinApp.Telas_Compromissos
 
         private void CarregarCompromissos(List<Compromisso> compromissos)
         {
+            if (compromissos.Count == 0)
+            {
+                MessageBox.Show("Nenhum compromisso neste período!", "Informativo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             listCompromissosFuturos.Items.Clear();
 
             foreach (Compromisso c in compromissos)
@@ -275,13 +298,6 @@ namespace e_Agenda.WinApp.Telas_Compromissos
 
         }
 
-        private void btnCompromissosDia_Click(object sender, EventArgs e)
-        {
-            DateTime inicioFiltro = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 0, 0, 0);
 
-            DateTime fimFiltro = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 59, 59);
-
-            CarregarCompromissos(FiltrarCompromissos(inicioFiltro, fimFiltro));
-        }
     }
 }

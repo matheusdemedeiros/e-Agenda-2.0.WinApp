@@ -244,6 +244,7 @@
             this.btnCompromissosSemana.TabIndex = 9;
             this.btnCompromissosSemana.Text = "Semana atual";
             this.btnCompromissosSemana.UseVisualStyleBackColor = false;
+            this.btnCompromissosSemana.Click += new System.EventHandler(this.btnCompromissosSemana_Click);
             // 
             // btnCompromissosDia
             // 
