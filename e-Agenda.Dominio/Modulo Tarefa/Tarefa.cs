@@ -127,15 +127,17 @@ namespace e_Agenda.Dominio.Modulo_Tarefa
         public override string Validar()
         {
             StringBuilder sb = new StringBuilder();
-
+            
+            int cont = 0;
+            
             if (string.IsNullOrEmpty(Titulo))
-                sb.AppendLine("É necessário inserir um título para as tarefas!");
+                sb.AppendLine(++cont + " - É necessário inserir um título para as tarefas!");
 
             if (DataCriacao.Date == new DateTime(1, 1, 1))
-                sb.AppendLine("É necessário inserir uma data de criação válida para as tarefas!");
+                sb.AppendLine(++cont + " - É necessário inserir uma data de criação válida para as tarefas!");
 
             if (prioridade == 0)
-                sb.AppendLine("É necessário inserir uma prioridade válida (Alta, Normal ou Baixa) para as tarefas!");
+                sb.AppendLine(++cont + " - É necessário inserir uma prioridade válida (Alta, Normal ou Baixa) para as tarefas!");
 
             if (sb.Length == 0)
                 sb.Append("REGISTRO_VALIDO");

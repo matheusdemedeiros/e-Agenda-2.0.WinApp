@@ -1,6 +1,5 @@
 ﻿using e_Agenda.Dominio.Compartilhado;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace e_Agenda.Dominio.Modulo_Contato
@@ -15,6 +14,7 @@ namespace e_Agenda.Dominio.Modulo_Contato
         public string Telefone { get; set; }
         public string Empresa { get; set; }
         public string Cargo { get; set; }
+        public int QuantidadeDeCompromissosRelacionados { get; set; }
 
         #endregion
 
@@ -32,6 +32,12 @@ namespace e_Agenda.Dominio.Modulo_Contato
             this.Empresa = empresa;
             this.Cargo = cargo;
         }
+        public Contato(string nome, string email, string telefone)
+        {
+            this.Nome = nome;
+            this.Email = email;
+            this.Telefone = telefone;
+        }
 
         #endregion
 
@@ -41,28 +47,22 @@ namespace e_Agenda.Dominio.Modulo_Contato
         {
             StringBuilder sb = new StringBuilder();
 
+            int cont = 0;
+
             if (string.IsNullOrEmpty(Nome))
-                sb.AppendLine("É necessário inserir um nome válido para os contatos!");
+                sb.AppendLine(++cont + " - É necessário inserir um nome válido para os contatos!");
 
             if (!ValidarEmail())
-                sb.AppendLine("É necessário inserir um email válido para os contatos (mínimo de 6 caracteres e contendo @ e . )!");
+                sb.AppendLine(++cont + " - É necessário inserir um email válido para os contatos (mínimo de 6 caracteres e contendo @ e . )!");
 
             if (!ValidarTelefone())
-                sb.AppendLine("É necessário inserir um telefone válido para os contatos (mínimo 10 números com o DDD)!");
-
-            if (string.IsNullOrEmpty(Empresa))
-                sb.AppendLine("É necessário inserir uma empresa válida para os contatos!");
-
-            if (string.IsNullOrEmpty(Cargo))
-                sb.AppendLine("É necessário inserir um cargo válido para os contatos!");
+                sb.AppendLine(++cont + " - É necessário inserir um telefone válido para os contatos (mínimo 10 números com o DDD)!");
 
             if (sb.Length == 0)
                 sb.Append("REGISTRO_VALIDO");
 
             return sb.ToString();
         }
-
-
 
         public override string ToString()
         {
